@@ -1,17 +1,12 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:ka3da/features/profile/presentation/widgets/custom_text_field.dart';
-import 'package:ka3da/features/profile/presentation/widgets/logout_card.dart';
 import 'package:ka3da/features/profile/presentation/widgets/my_custom_app_Bar.dart';
 import 'package:ka3da/features/profile/presentation/widgets/preferences.dart';
 import 'package:ka3da/features/profile/presentation/widgets/profile_bottom_sheet.dart';
-import 'package:ka3da/features/profile/presentation/widgets/profile_menu_card.dart';
 import 'package:ka3da/features/profile/presentation/widgets/profile_pic.dart';
-import 'package:ka3da/features/profile/presentation/widgets/statistic_item.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
@@ -51,7 +46,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Gap(24.h),
-        
+
             Container(
               alignment: Alignment.center,
               child: ProfilePic(
@@ -74,7 +69,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
             ),
             Gap(32.h),
-        
+
             Padding(
               padding: EdgeInsetsGeometry.only(left: 16.w, right: 16.w),
               child: CustomTextField(
@@ -84,9 +79,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 icon: "assets/profile/edit_profile/User.svg",
               ),
             ),
-        
+
             Gap(16.h),
-        
+
             Padding(
               padding: EdgeInsetsGeometry.only(left: 16.w, right: 16.w),
               child: CustomTextField(
@@ -96,7 +91,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 icon: "assets/profile/edit_profile/EnvelopeSimple.svg",
               ),
             ),
-        
+
             Gap(16.h),
             Padding(
               padding: EdgeInsetsGeometry.only(left: 16.w, right: 16.w),
@@ -108,7 +103,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
             ),
             Gap(16.h),
-        
+
             Padding(
               padding: EdgeInsetsGeometry.only(left: 18.w),
               child: Text(
@@ -121,7 +116,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
             ),
             Gap(8.h),
-        
+
             Padding(
               padding: EdgeInsetsGeometry.only(left: 16.w),
               child: Preferences(),

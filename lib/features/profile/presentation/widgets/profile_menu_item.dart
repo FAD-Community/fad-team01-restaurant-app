@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/features/profile/presentation/screens/edit_profile_screen.dart';
 
 class ProfileMenuItem extends StatelessWidget {
@@ -93,10 +94,7 @@ List<ProfileMenuModel> menuItems(BuildContext context) {
       icon: SvgPicture.asset("assets/profile/list_profile/PencilSimple.svg"),
       title: "Edit Profile",
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const EditProfileScreen()),
-        );
+        Navigator.pushNamed(context, AppRoutes.editProfile);
       },
     ),
     ProfileMenuModel(
