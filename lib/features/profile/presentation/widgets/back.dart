@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Back extends StatelessWidget {
-  const Back({super.key, this.iconColor});
+  const Back({super.key, this.iconColor, this.onPressed});
   final Color? iconColor;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class Back extends StatelessWidget {
         ),
         child: IconButton(
           padding: EdgeInsets.zero,
-          onPressed: () => Navigator.pop(context),
+          onPressed: onPressed ?? () => Navigator.pop(context),
           icon: Icon(Icons.arrow_back_ios_new_outlined, size: 14.sp),
         ),
       ),

@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:ka3da/features/profile/presentation/widgets/custom_text_field.dart';
+import 'package:ka3da/features/profile/presentation/widgets/edit_profile/custom_text_field.dart';
 import 'package:ka3da/features/profile/presentation/widgets/my_custom_app_Bar.dart';
-import 'package:ka3da/features/profile/presentation/widgets/preferences.dart';
-import 'package:ka3da/features/profile/presentation/widgets/profile_bottom_sheet.dart';
+import 'package:ka3da/features/profile/presentation/widgets/edit_profile/preferences.dart';
+import 'package:ka3da/features/profile/presentation/widgets/edit_profile/profile_bottom_sheet.dart';
 import 'package:ka3da/features/profile/presentation/widgets/profile_pic.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -37,7 +37,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           padding: EdgeInsetsGeometry.only(right: 32.w, bottom: 20.h),
           child: Text("Save", style: TextStyle(fontSize: 16.sp)),
         ),
-        title: "Profile",
+        title: "Edit Profile",
         textColor: const Color.fromARGB(255, 0, 0, 0),
         appbarColor: Color(0xffFFFEFC),
       ),

@@ -8,6 +8,8 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color textColor;
   final Color appbarColor;
   final Color? iconColor;
+    final VoidCallback? onPressed;
+
 
   const MyCustomAppBar({
     super.key,
@@ -15,7 +17,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.action,
     required this.textColor,
     required this.appbarColor,
-    this.iconColor,
+    this.iconColor, this.onPressed,
   });
 
   @override
@@ -23,9 +25,12 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     // final w = MediaQuery.of(context).size.width;
     // final h = MediaQuery.of(context).size.height;
     return AppBar(
+      surfaceTintColor: Colors.transparent,
+      elevation: 0,
+      scrolledUnderElevation: 0,
       titleSpacing: 12.w,
       title: Padding(
-        padding: EdgeInsets.only(top: 0 ,bottom:20.h ),
+        padding: EdgeInsets.only(top: 0, bottom: 20.h),
         child: Text(
           title,
           style: TextStyle(
@@ -37,8 +42,10 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       backgroundColor: appbarColor, // لون الخلفية
       leading: Padding(
-        padding: EdgeInsets.only(left: 16.w,bottom:20.h ),
-        child: Back(),
+        padding: EdgeInsets.only(left: 16.w, bottom: 20.h),
+        child: Back(
+          onPressed: onPressed,
+        ),
       ),
       actions: [?action],
     );

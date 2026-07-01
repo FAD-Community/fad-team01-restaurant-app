@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:ka3da/features/profile/presentation/widgets/logout_card.dart';
+import 'package:ka3da/features/layout/presentation/widget/navigation_controller.dart';
+import 'package:ka3da/features/profile/presentation/widgets/profile/logout_card.dart';
 import 'package:ka3da/features/profile/presentation/widgets/my_custom_app_Bar.dart';
-import 'package:ka3da/features/profile/presentation/widgets/profile_menu_card.dart';
+import 'package:ka3da/features/profile/presentation/widgets/profile/profile_menu_card.dart';
 import 'package:ka3da/features/profile/presentation/widgets/profile_pic.dart';
-import 'package:ka3da/features/profile/presentation/widgets/badge.dart';
-import 'package:ka3da/features/profile/presentation/widgets/statistic_item.dart';
+import 'package:ka3da/features/profile/presentation/widgets/profile/badge.dart';
+import 'package:ka3da/features/profile/presentation/widgets/profile/statistic_item.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -21,6 +21,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: Color(0xffFAF3E6),
       appBar: MyCustomAppBar(
+        onPressed: () {
+          NavigationController.controller.jumpToTab(0);
+        },
         title: "Profile",
         textColor: Colors.white,
         appbarColor: Color(0xff1A130D),
@@ -36,7 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Gap(24.h),
-                  ProfilePic(width: 60.w, height: 60.h, showCameraIcon: false,),
+                  ProfilePic(width: 60.w, height: 60.h, showCameraIcon: false),
                   Gap(12.h),
                   Text(
                     "Hesham Adel",
@@ -64,14 +67,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         title: "Bookings",
                       ),
                       Gap(12.w),
-        
+
                       StatisticItem(
                         icon: Icons.favorite_border,
                         value: "3",
                         title: "Saved",
                       ),
                       Gap(12.w),
-        
+
                       StatisticItem(
                         icon: Icons.star_border,
                         value: "4.5",
@@ -83,11 +86,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsGeometry.only(top: 24.h ,bottom: 8.h, left: 16.w , right: 16.w),
+              padding: EdgeInsetsGeometry.only(
+                top: 24.h,
+                bottom: 8.h,
+                left: 16.w,
+                right: 16.w,
+              ),
               child: const ProfileMenuCard(),
             ),
             Padding(
-              padding: EdgeInsetsGeometry.only(top: 24.h , left: 16.w , right: 16.w),
+              padding: EdgeInsetsGeometry.only(
+                top: 24.h,
+                left: 16.w,
+                right: 16.w,
+              ),
               child: const LogoutCard(),
             ),
           ],
