@@ -2,7 +2,9 @@ import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/features/profile/presentation/widgets/my_custom_app_Bar.dart';
+import 'package:ka3da/features/profile/presentation/widgets/settings/delete_account_dialog.dart';
 import 'package:ka3da/features/profile/presentation/widgets/settings/settings_language_tile.dart';
 import 'package:ka3da/features/profile/presentation/widgets/settings/settings_navigation_tile.dart';
 
@@ -144,7 +146,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     SettingsNavigationTile(
                       title: "Change Password",
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoutes.changePassword);
+                      },
                     ),
 
                     SettingsNavigationTile(
@@ -170,7 +174,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     width: 15.w,
                     height: 18.h,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    showDeleteAccountDialog(
+                      context,
+                      onDelete: () {
+                        // API Delete Account
+                      },
+                    );
+                  },
                 ),
               ),
               Gap(24.h),

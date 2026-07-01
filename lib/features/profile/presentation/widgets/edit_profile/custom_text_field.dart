@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   const CustomTextField({
     super.key,
     required this.controller,
@@ -10,6 +10,7 @@ class CustomTextField extends StatelessWidget {
     this.label,
     this.icon,
     this.maxLines = 1,
+    this.isPassword,
   });
 
   final TextEditingController controller;
@@ -17,39 +18,70 @@ class CustomTextField extends StatelessWidget {
   final String? label;
   final String? icon;
   final int maxLines;
+  final bool? isPassword;
+
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
+    final bool isPassword = widget.isPassword ?? false;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (label != null)
+        if (widget.label != null)
           Padding(
-            padding:  EdgeInsets.only(bottom: 6.h ,left: 2.w),
+            padding: EdgeInsets.only(bottom: 6.h, left: 2.w),
             child: Text(
-              label!,
+              widget.label!,
               style: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
-                color: Color(0xff261C14),
+                color: const Color(0xff261C14),
               ),
             ),
           ),
 
         TextField(
-          controller: controller,
-          maxLines: maxLines,
+          controller: widget.controller,
+          maxLines: isPassword ? 1 : widget.maxLines,
+          obscureText: isPassword ? _obscureText : false,
           decoration: InputDecoration(
-            hintText: hintText,
+            hintText: widget.hintText,
             hintStyle: TextStyle(
               fontSize: 13.sp,
-              color: Color(0xff473426).withOpacity(0.5),
+              color: const Color(0xff473426).withOpacity(0.5),
             ),
 
-            prefixIcon: icon != null
+            prefixIcon: widget.icon != null
                 ? Padding(
                     padding: EdgeInsets.only(left: 20.w, right: 10.w),
-                    child: SvgPicture.asset(icon!, width: 16.w, height: 16.h),
+                    child: SvgPicture.asset(
+                      widget.icon!,
+                      width: 16.w,
+                      height: 16.h,
+                    ),
+                  )
+                : null,
+
+            suffixIcon: isPassword
+                ? IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                    icon: Icon(
+                      _obscureText
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
+                      color: Colors.grey,
+                    ),
                   )
                 : null,
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:ka3da/features/profile/presentation/screens/about_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/settings_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
@@ -112,6 +113,10 @@ List<ProfileMenuModel> menuItems(BuildContext context) {
     ProfileMenuModel(
       icon: SvgPicture.asset("assets/profile/list_profile/Info.svg"),
       title: "About Qa3da",
+      onTap: () {
+                pushScreen(context, screen: const AboutScreen(), withNavBar: false);
+
+      },
     ),
     ProfileMenuModel(
       icon: SvgPicture.asset(

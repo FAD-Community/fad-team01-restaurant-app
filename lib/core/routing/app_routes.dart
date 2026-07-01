@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/splash_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/change_password_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/profile_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:ka3da/features/layout/presentation/screens/main_layout.dart';
@@ -13,6 +14,7 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String editProfile = '/editProfile';
   static const String settingspage = '/sttings';
+  static const String changePassword = '/changePassword';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -49,6 +51,11 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const SettingsScreen(),
+        );
+      case changePassword:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const ChangePasswordScreen(),
         );
 
       //==============================================================================
