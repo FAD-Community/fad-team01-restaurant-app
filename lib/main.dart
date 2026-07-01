@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ka3da/features/profile/presentation/screens/profile_screen.dart';
+import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/screen_util_test.dart';
 
 void main() {
@@ -35,10 +35,8 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           ),
-          home: ProfileScreen() 
-           
-          
-          
+          initialRoute: AppRoutes.splash,
+          onGenerateRoute: AppRoutes.generateRoute,
         );
       },
     );
