@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/features/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/settings_screen.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class ProfileMenuItem extends StatelessWidget {
   const ProfileMenuItem({
@@ -94,12 +95,19 @@ List<ProfileMenuModel> menuItems(BuildContext context) {
       icon: SvgPicture.asset("assets/profile/list_profile/PencilSimple.svg"),
       title: "Edit Profile",
       onTap: () {
-        Navigator.pushNamed(context, AppRoutes.editProfile);
+        pushScreen(
+          context,
+          screen: const EditProfileScreen(),
+          withNavBar: false,
+        );
       },
     ),
     ProfileMenuModel(
       icon: SvgPicture.asset("assets/profile/list_profile/Gear.svg"),
       title: "Settings",
+      onTap: () {
+        pushScreen(context, screen: const SettingsScreen(), withNavBar: false);
+      },
     ),
     ProfileMenuModel(
       icon: SvgPicture.asset("assets/profile/list_profile/Info.svg"),

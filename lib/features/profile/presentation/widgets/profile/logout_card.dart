@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ka3da/features/profile/presentation/widgets/profile_menu_item.dart';
+import 'package:ka3da/features/profile/presentation/widgets/profile/profile_menu_item.dart';
 
 class LogoutCard extends StatelessWidget {
   const LogoutCard({super.key});

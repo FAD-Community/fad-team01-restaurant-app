@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ka3da/features/layout/presentation/widget/navigation_controller.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
@@ -16,9 +17,7 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
-  final PersistentTabController _controller = PersistentTabController(
-    initialIndex: 0,
-  );
+  final PersistentTabController _controller = NavigationController.controller;
 
   List<PersistentTabConfig> _tabs() {
     return [
@@ -42,7 +41,7 @@ class _MainLayoutState extends State<MainLayout> {
         ),
       ),
       PersistentTabConfig(
-        screen: const HomeScreen(),
+        screen: const DiscoverScreen(),
         item: ItemConfig(
           title: "Discover",
           activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
@@ -61,7 +60,7 @@ class _MainLayoutState extends State<MainLayout> {
         ),
       ),
       PersistentTabConfig(
-        screen: const HomeScreen(),
+        screen: const BookingsScreen(),
         item: ItemConfig(
           title: "Bookings",
           activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
@@ -80,7 +79,7 @@ class _MainLayoutState extends State<MainLayout> {
         ),
       ),
       PersistentTabConfig(
-        screen: const HomeScreen(),
+        screen: const FavoritesScreen(),
         item: ItemConfig(
           title: "Favorites",
           activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
@@ -99,7 +98,7 @@ class _MainLayoutState extends State<MainLayout> {
         ),
       ),
       PersistentTabConfig(
-        screen: const HomeScreen(),
+        screen: const ProfileScreen(),
         item: ItemConfig(
           title: "Profile",
           activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
