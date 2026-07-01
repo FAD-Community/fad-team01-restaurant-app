@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
@@ -15,53 +16,105 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
-  final PersistentTabController _controller = PersistentTabController(initialIndex: 0);
+  final PersistentTabController _controller = PersistentTabController(
+    initialIndex: 0,
+  );
 
   List<PersistentTabConfig> _tabs() {
     return [
       PersistentTabConfig(
         screen: const HomeScreen(),
         item: ItemConfig(
-          icon: const Icon(Icons.home),
           title: "Home",
-          activeForegroundColor: Colors.deepOrange,
-          inactiveForegroundColor: Colors.grey,
+          activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
+          activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
+          icon: SvgPicture.asset(
+            "assets/nav_bar/home.svg",
+            colorFilter: ColorFilter.mode(Color(0xffAE292E), BlendMode.srcIn),
+          ),
+          inactiveIcon: SvgPicture.asset(
+            "assets/nav_bar/home.svg",
+            colorFilter: ColorFilter.mode(
+              Color(0xffAE292E).withOpacity(0.4),
+              BlendMode.srcIn,
+            ),
+          ),
         ),
       ),
       PersistentTabConfig(
-        screen: const DiscoverScreen(),
+        screen: const HomeScreen(),
         item: ItemConfig(
-          icon: const Icon(Icons.search),
           title: "Discover",
-          activeForegroundColor: Colors.deepOrange,
-          inactiveForegroundColor: Colors.grey,
+          activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
+          activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
+          icon: SvgPicture.asset(
+            "assets/nav_bar/search.svg",
+            colorFilter: ColorFilter.mode(Color(0xffAE292E), BlendMode.srcIn),
+          ),
+          inactiveIcon: SvgPicture.asset(
+            "assets/nav_bar/search.svg",
+            colorFilter: ColorFilter.mode(
+              Color(0xffAE292E).withOpacity(0.4),
+              BlendMode.srcIn,
+            ),
+          ),
         ),
       ),
       PersistentTabConfig(
-        screen: const BookingsScreen(),
+        screen: const HomeScreen(),
         item: ItemConfig(
-          icon: const Icon(Icons.calendar_today),
           title: "Bookings",
-          activeForegroundColor: Colors.deepOrange,
-          inactiveForegroundColor: Colors.grey,
+          activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
+          activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
+          icon: SvgPicture.asset(
+            "assets/nav_bar/proicons_calendar.svg",
+            colorFilter: ColorFilter.mode(Color(0xffAE292E), BlendMode.srcIn),
+          ),
+          inactiveIcon: SvgPicture.asset(
+            "assets/nav_bar/proicons_calendar.svg",
+            colorFilter: ColorFilter.mode(
+              Color(0xffAE292E).withOpacity(0.4),
+              BlendMode.srcIn,
+            ),
+          ),
         ),
       ),
       PersistentTabConfig(
-        screen: const FavoritesScreen(),
+        screen: const HomeScreen(),
         item: ItemConfig(
-          icon: const Icon(Icons.favorite),
           title: "Favorites",
-          activeForegroundColor: Colors.deepOrange,
-          inactiveForegroundColor: Colors.grey,
+          activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
+          activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
+          icon: SvgPicture.asset(
+            "assets/nav_bar/HeartStraight.svg",
+            colorFilter: ColorFilter.mode(Color(0xffAE292E), BlendMode.srcIn),
+          ),
+          inactiveIcon: SvgPicture.asset(
+            "assets/nav_bar/HeartStraight.svg",
+            colorFilter: ColorFilter.mode(
+              Color(0xffAE292E).withOpacity(0.4),
+              BlendMode.srcIn,
+            ),
+          ),
         ),
       ),
       PersistentTabConfig(
-        screen: const ProfileScreen(),
+        screen: const HomeScreen(),
         item: ItemConfig(
-          icon: const Icon(Icons.person),
           title: "Profile",
-          activeForegroundColor: Colors.deepOrange,
-          inactiveForegroundColor: Colors.grey,
+          activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
+          activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
+          icon: SvgPicture.asset(
+            "assets/nav_bar/User.svg",
+            colorFilter: ColorFilter.mode(Color(0xffAE292E), BlendMode.srcIn),
+          ),
+          inactiveIcon: SvgPicture.asset(
+            "assets/nav_bar/User.svg",
+            colorFilter: ColorFilter.mode(
+              Color(0xffAE292E).withOpacity(0.4),
+              BlendMode.srcIn,
+            ),
+          ),
         ),
       ),
     ];
@@ -72,9 +125,8 @@ class _MainLayoutState extends State<MainLayout> {
     return PersistentTabView(
       controller: _controller,
       tabs: _tabs(),
-      navBarBuilder: (navBarConfig) => Style2BottomNavBar(
-        navBarConfig: navBarConfig,
-      ),
+      navBarBuilder: (navBarConfig) =>
+          Style2BottomNavBar(navBarConfig: navBarConfig),
     );
   }
 }
