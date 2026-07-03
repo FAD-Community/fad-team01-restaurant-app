@@ -154,7 +154,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     SettingsNavigationTile(
                       title: "Privacy Policy",
                       showDivider: false,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          AppRoutes.privacyPolicyScreen,
+                        );
+                      },
                     ),
                   ],
                 ),

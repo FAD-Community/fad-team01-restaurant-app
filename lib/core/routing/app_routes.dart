@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/splash_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/about_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/change_password_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/support_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/privacy_policy_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/profile_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:ka3da/features/layout/presentation/screens/main_layout.dart';
@@ -14,7 +17,10 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String editProfile = '/editProfile';
   static const String settingspage = '/sttings';
+  static const String aboutQa3da = '/aboutQa3da';
+  static const String supportScreen = '/supportScreen';
   static const String changePassword = '/changePassword';
+  static const String privacyPolicyScreen = '/privacyPolicyScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -57,15 +63,28 @@ class AppRoutes {
           settings: settings,
           builder: (_) => const ChangePasswordScreen(),
         );
+      case privacyPolicyScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const PrivacyPolicyScreen(),
+        );
+      case aboutQa3da:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const AboutScreen(),
+        );
+      case supportScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const SupportScreen(),
+        );
 
       //==============================================================================
       default:
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const Scaffold(
-            body: Center(
-              child: Text('Screen does not exist!'),
-            ),
+            body: Center(child: Text('Screen does not exist!')),
           ),
         );
     }

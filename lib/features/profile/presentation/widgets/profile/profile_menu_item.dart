@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:ka3da/features/profile/presentation/screens/about_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/settings_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/support_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class ProfileMenuItem extends StatelessWidget {
@@ -114,8 +115,7 @@ List<ProfileMenuModel> menuItems(BuildContext context) {
       icon: SvgPicture.asset("assets/profile/list_profile/Info.svg"),
       title: "About Qa3da",
       onTap: () {
-                pushScreen(context, screen: const AboutScreen(), withNavBar: false);
-
+        pushScreen(context, screen: const AboutScreen(), withNavBar: false);
       },
     ),
     ProfileMenuModel(
@@ -128,6 +128,9 @@ List<ProfileMenuModel> menuItems(BuildContext context) {
       icon: SvgPicture.asset("assets/profile/list_profile/Headset.svg"),
       title: "Help & Support",
       showDivider: false,
+      onTap: () {
+        pushScreen(context, screen: const SupportScreen(), withNavBar: false);
+      },
     ),
   ];
 }

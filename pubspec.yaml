@@ -80,6 +80,7 @@ flutter:
     - assets/profile/edit_profile/
     - assets/profile/list_profile/
     - assets/profile/settings/
+    - assets/profile/about_screen/
     - assets/nav_bar/
 
   # An image asset can refer to one or more resolution-specific "variants", see
