@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ka3da/core/routing/app_routes.dart';
+import 'package:ka3da/core/theme/colors.dart';
+import 'package:ka3da/core/theme/text_styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:ka3da/core/widgets/custom_button.dart';
 
 class OnboardingContent {
@@ -55,7 +56,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1E1A17),
+      backgroundColor: AppColors.darkBackground,
       body: Stack(
         children: [
           // Background Images and Text
@@ -84,10 +85,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                          Colors.transparent,
-                          Colors.black.withOpacity(0.2),
-                          Colors.black.withOpacity(0.7),
-                          const Color(0xFF181512),
+                          AppColors.transparent,
+                          Colors.black.withValues(alpha: 0.2),
+                          Colors.black.withValues(alpha: 0.7),
+                          AppColors.darkerBackground,
                         ],
                         stops: const [0.0, 0.4, 0.7, 1.0],
                       ),
@@ -105,11 +106,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           // Title
                           Text(
                             _contents[index].title,
-                            style: GoogleFonts.playfairDisplay(
-                              color: Colors.white,
-                              fontSize: 38.sp,
+                            style: AppTextStyles.displayMedium.copyWith(
                               height: 1.1,
-                              fontWeight: FontWeight.w700,
                             ),
                           ),
                           
@@ -118,11 +116,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           // Subtitle
                           Text(
                             _contents[index].description,
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.85),
-                              fontSize: 16.sp,
-                              height: 1.5,
-                            ),
+                            style: AppTextStyles.onboardingDescription,
                           ),
                           
                           // Space for indicator and button
@@ -144,19 +138,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   // Skip Button
+                  _currentIndex ==2? SizedBox() :
                   Align(
                     alignment: Alignment.topRight,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, AppRoutes.mainLayout);
+                        Navigator.pushReplacementNamed(context, AppRoutes.authGateScreen);
                       },
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.white,
                       ),
                       child: Text(
                         'Skip',
-                        style: TextStyle(
-                          fontSize: 16.sp,
+                        style: AppTextStyles.bodyLarge.copyWith(
+                          color: AppColors.white,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -172,7 +167,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       controller: _pageController,
                       count: _contents.length,
                       effect: ExpandingDotsEffect(
-                        activeDotColor: const Color(0xFF9E2A2B), // The red color
+                        activeDotColor: AppColors.primaryDot,
                         dotColor: Colors.grey.shade600,
                         dotHeight: 6.h,
                         dotWidth: 8.w,
@@ -193,17 +188,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           curve: Curves.easeInOut,
                         );
                       } else {
-                        Navigator.pushReplacementNamed(context, AppRoutes.mainLayout);
+                        Navigator.pushReplacementNamed(context, AppRoutes.authGateScreen);
                       }
                     },
-                    backgroundColor: const Color(0xFF8B2527), // Red button color
+                    backgroundColor: AppColors.primary,
                     child: Text(
                       _currentIndex == 2 ? 'Get Started' : 'Continue',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: AppTextStyles.buttonLarge,
                     ),
                   ),
                   SizedBox(height: 16.h),

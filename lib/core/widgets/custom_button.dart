@@ -8,6 +8,7 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final double? height;
   final double borderRadius;
+  final BorderSide? border;
 
   const CustomButton({
     super.key,
@@ -17,6 +18,7 @@ class CustomButton extends StatelessWidget {
     this.width = double.infinity,
     this.height,
     this.borderRadius = 16.0,
+    this.border,
   });
 
   @override
@@ -30,6 +32,7 @@ class CustomButton extends StatelessWidget {
           backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius.r),
+            side: border ?? BorderSide.none,
           ),
           elevation: 0,
         ),
