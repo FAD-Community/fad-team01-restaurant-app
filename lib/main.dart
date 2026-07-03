@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            colorScheme: ColorScheme.fromSeed(seedColor: Color(0xffFAF3E6)),
+            scaffoldBackgroundColor: Color(0xffFAF3E6)
           ),
           initialRoute: AppRoutes.splash,
           onGenerateRoute: AppRoutes.generateRoute,

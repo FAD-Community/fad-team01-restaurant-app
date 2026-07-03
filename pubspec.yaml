@@ -37,6 +37,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_otp_text_field: ^1.5.1+1
   flutter_screenutil: ^5.9.3
   flutter_secure_storage: ^10.3.1
   flutter_svg: ^2.3.0
@@ -56,6 +57,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   shared_preferences: ^2.5.5
   shimmer: ^3.0.0
+  smooth_page_indicator: ^2.0.1
   url_launcher: ^6.3.2
 
 dev_dependencies:
@@ -81,6 +83,7 @@ flutter:
     - assets/profile/list_profile/
     - assets/profile/settings/
     - assets/nav_bar/
+    - assets/splash/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

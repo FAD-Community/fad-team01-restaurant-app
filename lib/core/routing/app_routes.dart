@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
+import 'package:ka3da/features/intro/presentation/screens/auth_gate_screen.dart';
+import 'package:ka3da/features/intro/presentation/screens/create_account_screen.dart';
+import 'package:ka3da/features/intro/presentation/screens/forget_password_screen.dart';
+import 'package:ka3da/features/intro/presentation/screens/login_screen.dart';
+import 'package:ka3da/features/intro/presentation/screens/on_boarding_screen.dart';
+import 'package:ka3da/features/intro/presentation/screens/otp_screen.dart';
+import 'package:ka3da/features/intro/presentation/screens/create_new_password_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/splash_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/profile_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/edit_profile_screen.dart';
@@ -13,6 +20,13 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String editProfile = '/editProfile';
   static const String settingspage = '/sttings';
+  static const String onboardingscreen = '/onboarding';
+  static const String authGateScreen = '/authGateScreen';
+  static const String createAccountScreen = '/createAccountScreen';
+  static const String loginscreen = '/loginscreen';
+  static const String forgetPasswordScreen = '/forgetPasswordScreen';
+  static const String otpScreen = '/otpScreen';
+  static const String createNewPasswordScreen = '/createNewPasswordScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -49,6 +63,41 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const SettingsScreen(),
+        );
+      case onboardingscreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const OnBoardingScreen(),
+        );
+      case authGateScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const AuthGateScreen(),
+        );
+      case createAccountScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const CreateAccountScreen(),
+        );
+      case loginscreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const LoginScreen(),
+        );
+      case forgetPasswordScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const ForgetPasswordScreen(),
+        );
+      case otpScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const OtpScreen(),
+        );
+      case createNewPasswordScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const CreateNewPasswordScreen(),
         );
 
       //==============================================================================
