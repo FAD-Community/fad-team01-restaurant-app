@@ -3,8 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
 
-class CreateNewPasswordHeader extends StatelessWidget {
-  const CreateNewPasswordHeader({super.key});
+class AuthSubtitle extends StatelessWidget {
+  const AuthSubtitle(this.subtitle, this.title, {super.key});
+
+  final String subtitle;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +15,15 @@ class CreateNewPasswordHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Create New Password',
+          title,
           style: AppTextStyles.h1.copyWith(color: AppColors.darkBackground),
         ),
-        SizedBox(height: 8.h),
+        SizedBox(height: 4.h),
+
         Text(
-          'Your new password must be different from your\nprevious password.',
-          style: AppTextStyles.body.copyWith(
-            color: AppColors.darkerBackground,
-            height: 1.5,
-            fontSize: 15,
+          subtitle,
+          style: AppTextStyles.bodyMedium.copyWith(
+            color: AppColors.textSecondary,
           ),
         ),
       ],

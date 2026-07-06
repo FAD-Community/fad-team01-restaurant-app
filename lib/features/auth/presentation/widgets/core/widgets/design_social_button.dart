@@ -17,8 +17,8 @@ class SocialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 60.w,
-      height: 60.w,
+      width: 52.w,
+      height: 48.w,
       decoration: BoxDecoration(
         color: AppColors.surfaceWhite,
         borderRadius: BorderRadius.circular(16.r),

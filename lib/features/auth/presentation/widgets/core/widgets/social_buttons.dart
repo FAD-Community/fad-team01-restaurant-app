@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'social_button.dart';
+import 'design_social_button.dart';
 
 class SocialButtons extends StatelessWidget {
   const SocialButtons({super.key});
 
-  void _onGooglePressed() {}
+  void onGooglePressed() {
 
-  void _onApplePressed() {}
+  }
+
+  void onApplePressed() {
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +21,14 @@ class SocialButtons extends StatelessWidget {
       children: [
         SocialButton(
           asset: 'assets/splash/google_icon.svg',
-          onPressed: _onGooglePressed,
+          onPressed: onGooglePressed,
         ),
 
         SizedBox(width: 24.w),
 
         SocialButton(
           asset: 'assets/splash/apple_icon.svg',
-          onPressed: _onApplePressed,
+          onPressed: onApplePressed,
         ),
       ],
     );

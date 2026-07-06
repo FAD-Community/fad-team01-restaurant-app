@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/features/auth/presentation/widgets/core/widgets/auth_button.dart';
 import 'package:ka3da/features/auth/presentation/widgets/core/widgets/auth_footer.dart';
@@ -49,8 +50,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               SizedBox(height: 28.h),
 
               CreateAccountForm(
-                firstnameController: _firstnameController,
-                lastnameController: _lastnameController,
+                firstNameController: _firstnameController,
+                lastNameController: _lastnameController,
                 emailController: _emailController,
                 passwordController: _passwordController,
                 confirmPasswordController: _confirmPasswordController,
@@ -67,9 +68,15 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   });
                 },
               ),
-              SizedBox(height: 28.h),
+              Gap(28.h),
 
-             
+              AuthButton(
+                text: "Signup",
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.mainLayout);
+                },
+              ),
+              SizedBox(height: 28.h),
 
               const AuthSocialSection(),
 

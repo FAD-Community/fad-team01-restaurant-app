@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/features/auth/presentation/widgets/auth_gate/auth_gate_header.dart';
 import 'package:ka3da/features/auth/presentation/widgets/auth_gate/continue_divider.dart';
 import 'package:ka3da/features/auth/presentation/widgets/auth_gate/create_account_button.dart';
 import 'package:ka3da/features/auth/presentation/widgets/auth_gate/guest_button.dart';
-import 'package:ka3da/features/auth/presentation/widgets/auth_gate/sign_in_section.dart';
+import 'package:ka3da/features/auth/presentation/widgets/core/widgets/auth_footer.dart';
 import 'package:ka3da/features/auth/presentation/widgets/core/widgets/social_buttons.dart';
-
 
 class AuthGateScreen extends StatelessWidget {
   const AuthGateScreen({super.key});
@@ -20,8 +20,8 @@ class AuthGateScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-             AuthGateHeader(),
-             Gap(56.h),
+            AuthGateHeader(),
+            Gap(56.h),
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -35,17 +35,23 @@ class AuthGateScreen extends StatelessWidget {
 
                   const ContinueDivider(),
 
-                  SizedBox(height: 32.h),
+                  SizedBox(height: 24.h),
 
                   const SocialButtons(),
 
-                  SizedBox(height: 32.h),
+                  SizedBox(height: 16.h),
 
                   const GuestButton(),
 
-                  SizedBox(height: 24.h),
+                  SizedBox(height: 16.h),
 
-                  const SignInSection(),
+                  AuthFooter(
+                    title: 'Already have an account?',
+                    actionText: 'Sign in',
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.loginscreen);
+                    },
+                  ),
 
                   SizedBox(height: 40.h),
                 ],
