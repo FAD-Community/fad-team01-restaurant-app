@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ka3da/core/theme/text_styles.dart';
 
 class Badge extends StatelessWidget {
   const Badge({
@@ -37,14 +38,9 @@ class Badge extends StatelessWidget {
             children: [
               Icon(Icons.star, size: 10, color: Colors.white),
               SizedBox(width: 2.w),
-              Text(
-                title,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 10.sp,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
+              Text(title, style: AppTextStyles.inline.copyWith(
+                color: Colors.white
+              )),
             ],
           ),
         ),

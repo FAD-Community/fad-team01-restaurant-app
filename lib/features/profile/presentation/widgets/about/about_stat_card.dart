@@ -23,7 +23,7 @@ class AboutStatCard extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(14.r),
           border: Border.all(
-            color: const Color(0xffE7DCCB),
+            color: const Color(0xffE3D6BA),
             width: 1,
           ),
         ),

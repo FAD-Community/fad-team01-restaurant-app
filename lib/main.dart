@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ka3da/core/routing/app_routes.dart';
+import 'package:ka3da/core/theme/text_styles.dart';
 
 void main() {
   runApp(
@@ -31,8 +32,10 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            useMaterial3: true,
+            fontFamily: AppTextStyles.bodyFont,
             colorScheme: ColorScheme.fromSeed(seedColor: Color(0xffFAF3E6)),
-            scaffoldBackgroundColor: Color(0xffFAF3E6)
+            scaffoldBackgroundColor: Color(0xffFAF3E6),
           ),
           initialRoute: AppRoutes.splash,
           onGenerateRoute: AppRoutes.generateRoute,

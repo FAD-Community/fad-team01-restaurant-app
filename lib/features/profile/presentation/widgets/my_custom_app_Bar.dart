@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ka3da/core/theme/text_styles.dart';
 import 'package:ka3da/features/profile/presentation/widgets/back.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,11 +34,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: EdgeInsets.only(top: 0, bottom: 20.h),
         child: Text(
           title,
-          style: TextStyle(
-            color: textColor,
-            fontWeight: FontWeight.bold,
-            fontSize: 25.sp,
-          ),
+          style: AppTextStyles.h1
         ),
       ),
       backgroundColor: appbarColor, // لون الخلفية

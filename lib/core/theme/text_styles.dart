@@ -1,210 +1,160 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ka3da/core/theme/colors.dart';
+import 'colors.dart';
 
-/// Centralized text styles for the entire app.
-/// Uses DM Sans as the primary font and Playfair Display for display/brand text.
 class AppTextStyles {
-  AppTextStyles._(); // Prevent instantiation
+  AppTextStyles._();
 
-  // ============================================================
-  // Base Font Families
-  // ============================================================
+  //==========================
+  // Font Families
+  //==========================
 
-  /// Primary font family - DM Sans (body, labels, buttons)
-  static String get _primaryFont => GoogleFonts.dmSans().fontFamily!;
+static const String bodyFont = 'PlusJakartaSans';
+static const String heroFont = 'DMSerifDisplay';
+  //==========================
+  // Hero
+  //==========================
 
-  /// Display font family - Playfair Display (brand name, headings)
-  static String get _displayFont => GoogleFonts.playfairDisplay().fontFamily!;
+  static TextStyle hero = TextStyle(
+    fontFamily: heroFont,
+    fontSize: 36.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textDark,
+    height: 1.2,
+  );
 
-  // ============================================================
-  // Display / Brand Styles (Playfair Display)
-  // ============================================================
 
-  /// App brand name style (e.g., "Qa3da" on auth gate)
-  static TextStyle get displayLarge => GoogleFonts.playfairDisplay(
-        fontSize: 48.sp,
-        fontWeight: FontWeight.w700,
-        color: Colors.white,
-      );
+  //==========================
+  // Headings
+  //==========================
 
-  /// Onboarding heading style
-  static TextStyle get displayMedium => GoogleFonts.playfairDisplay(
-        fontSize: 38.sp,
-        fontWeight: FontWeight.w700,
-        color: Colors.white,
-      );
+  static TextStyle h1 = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 25.sp,
+    fontWeight: FontWeight.w700,
+    color:  Color.fromARGB(255, 255, 255, 255),
+  );
 
-  // ============================================================
-  // Heading Styles (DM Sans)
-  // ============================================================
+  static TextStyle h2 = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.textDark,
+  );
 
-  /// Large heading - screen titles (e.g., "Welcome Back", "Create Account")
-  static TextStyle get headingLarge => GoogleFonts.dmSans(
-        fontSize: 28.sp,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      );
+  //==========================
+  // Paragraph
+  //==========================
 
-  /// Medium heading - section titles (e.g., "Forget Password?", "Enter Code")
-  static TextStyle get headingMedium => GoogleFonts.dmSans(
-        fontSize: 24.sp,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      );
+  static TextStyle body = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textDark,
+    height: 1.5,
+  );
 
-  /// Small heading - dialog titles (e.g., "Password Updated!")
-  static TextStyle get headingSmall => GoogleFonts.dmSans(
-        fontSize: 20.sp,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      );
+  static TextStyle bodyMedium = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textDark,
+  );
 
-  // ============================================================
-  // Body Styles (DM Sans)
-  // ============================================================
+  static TextStyle bodySemiBold = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textDark,
+  );
 
-  /// Body large - subtitle text, descriptions
-  static TextStyle get bodyLarge => GoogleFonts.dmSans(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.normal,
-        color: Colors.black87,
-      );
+  //==========================
+  // Caption
+  //==========================
 
-  /// Body medium - general body text, form labels
-  static TextStyle get bodyMedium => GoogleFonts.dmSans(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.normal,
-        color: Colors.black87,
-      );
+  static TextStyle caption = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w300,
+    color: AppColors.textSecondary,
+  );
+  static TextStyle captionMedium = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+  );
 
-  /// Body small - captions, helper text
-  static TextStyle get bodySmall => GoogleFonts.dmSans(
-        fontSize: 13.sp,
-        fontWeight: FontWeight.normal,
-        color: Colors.black54,
-      );
+  static TextStyle captionlarge = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textSecondary,
+  );
 
-  // ============================================================
-  // Button Styles (DM Sans)
-  // ============================================================
+  //==========================
+  // Inline
+  //==========================
 
-  /// Primary button text (e.g., "Sign in", "Send Code")
-  static TextStyle get buttonLarge => GoogleFonts.dmSans(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w600,
-        color: Colors.white,
-      );
+  static TextStyle inline = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w200,
+    color: AppColors.textSecondary,
+  );
 
-  /// Secondary button text
-  static TextStyle get buttonMedium => GoogleFonts.dmSans(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w600,
-        color: Colors.white,
-      );
+  //==========================
+  // Buttons
+  //==========================
 
-  // ============================================================
-  // Label Styles (DM Sans)
-  // ============================================================
+  static TextStyle button = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
 
-  /// Form field labels (e.g., "Email Address", "Password")
-  static TextStyle get label => GoogleFonts.dmSans(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w500,
-        color: Colors.black87,
-      );
+  //==========================
+  // TextField
+  //==========================
 
-  /// Hint text inside text fields
-  static TextStyle get hint => GoogleFonts.dmSans(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.normal,
-        color: Colors.grey.shade400,
-      );
+  static TextStyle input = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: const Color.fromARGB(255, 255, 255, 255),
+  );
 
-  /// Input text inside text fields
-  static TextStyle get input => GoogleFonts.dmSans(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.normal,
-        color: Colors.black87,
-      );
+  static TextStyle hint = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textHint,
+  );
 
-  // ============================================================
-  // Link Styles (DM Sans)
-  // ============================================================
+  static TextStyle label = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textDark,
+  );
 
-  /// Primary link (e.g., "Create Account", "Sign in" at bottom)
-  static TextStyle get linkPrimary => GoogleFonts.dmSans(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w600,
-        color: AppColors.primary,
-        decoration: TextDecoration.underline,
-        decorationColor: AppColors.primary,
-      );
+  //==========================
+  // Links
+  //==========================
 
-  /// Accent link (e.g., "Forgot Password?", "Resent Code")
-  static TextStyle get linkAccent => GoogleFonts.dmSans(
-        fontSize: 13.sp,
-        fontWeight: FontWeight.w500,
-        color: AppColors.accent,
-      );
+  static TextStyle link = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primary,
+  );
+  static TextStyle subtitle = TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w200,
+    color: AppColors.primary,
+  );
 
-  /// Accent link with underline
-  static TextStyle get linkAccentUnderline => GoogleFonts.dmSans(
-        fontSize: 13.sp,
-        fontWeight: FontWeight.w500,
-        color: AppColors.accent,
-        decoration: TextDecoration.underline,
-        decorationColor: AppColors.accent,
-      );
-
-  // ============================================================
-  // Subtitle / Description Styles
-  // ============================================================
-
-  /// Screen subtitle (e.g., "Sign in to continue your dining journey.")
-  static TextStyle get subtitle => GoogleFonts.dmSans(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.normal,
-        color: Colors.grey.shade700,
-        height: 1.4,
-      );
-
-  /// Onboarding description text
-  static TextStyle get onboardingDescription => GoogleFonts.dmSans(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.normal,
-        color: Colors.white.withValues(alpha: 0.8),
-        height: 1.5,
-      );
-
-  /// Auth gate description (white on dark)
-  static TextStyle get descriptionLight => GoogleFonts.dmSans(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.normal,
-        color: Colors.white.withValues(alpha: 0.9),
-        height: 1.5,
-      );
-
-  // ============================================================
-  // Divider / Separator Text
-  // ============================================================
-
-  /// Divider text (e.g., "or continue with")
-  static TextStyle get dividerText => GoogleFonts.dmSans(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.normal,
-        color: Colors.grey.shade600,
-      );
-
-  // ============================================================
-  // OTP Style
-  // ============================================================
-
-  /// OTP field text
-  static TextStyle get otpField => GoogleFonts.dmSans(
-        fontSize: 24.sp,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      );
+  static TextStyle? get bodySecondary => null;
 }

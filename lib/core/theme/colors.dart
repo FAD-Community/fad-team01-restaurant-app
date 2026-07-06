@@ -10,13 +10,13 @@ class AppColors {
   // ============================================================
 
   /// Main brand red - used for primary buttons, active indicators, links
-  static const Color primary = Color(0xFF8B2527);
+  static const Color primary = Color(0xFF8C1F22);
 
   /// Active dot red - used for page indicators
   static const Color primaryDot = Color(0xFF9E2A2B);
 
   /// Brownish accent - used for "Forgot Password", "Resend Code" links
-  static const Color accent = Color(0xFFB56A54);
+  static const Color accent = Color(0xFF964C21);
 
   /// Success green - used for OTP border, success states
   static const Color success = Color(0xFF4CAF50);
@@ -26,13 +26,13 @@ class AppColors {
   // ============================================================
 
   /// Main beige background used across all screens
-  static const Color scaffoldBackground = Color(0xFFF5F1E8);
+  static const Color scaffoldBackground = Color(0xffFAF3E6);
 
   /// Alternative beige background (used in main.dart theme)
   static const Color scaffoldBackgroundAlt = Color(0xFFFAF3E6);
 
   /// Dark background - used for onboarding, auth gate top section
-  static const Color darkBackground = Color(0xFF1E1A17);
+  static const Color darkBackground = Color(0xFF1A130D);
 
   /// Darker background variant - used for onboarding gradient
   static const Color darkerBackground = Color(0xFF181512);
@@ -44,7 +44,7 @@ class AppColors {
   static const Color transparent = Colors.transparent;
 
   /// Light grey divider color
-  static Color divider = Colors.grey.shade300;
+  static Color divider = Color(0xffE3D6BA);
 
   // ============================================================
   // Surface Colors
@@ -90,13 +90,13 @@ class AppColors {
   static const Color textDarkBrown = Color(0xff1A130D);
 
   /// Secondary text color
-  static const Color textSecondary = Color(0xff8A8178);
+  static const Color textSecondary = Color(0xff473426);
 
   /// Muted text color
   static const Color textMuted = Color(0xff6E6259);
 
   /// Hint/placeholder text color
-  static const Color textHint = Color(0xff6A625B);
+  static const Color textHint = Color.fromARGB(134, 71, 52, 38);
 
   /// Another hint variant
   static const Color textHintAlt = Color(0xff4A443F);

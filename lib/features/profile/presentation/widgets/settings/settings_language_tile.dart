@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:ka3da/core/theme/text_styles.dart';
 
 class SettingsLanguageTile extends StatelessWidget {
   const SettingsLanguageTile({
@@ -23,21 +24,17 @@ class SettingsLanguageTile extends StatelessWidget {
             Expanded(
               child: Text(
                 "Language",
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w400,
-                  color: const Color(0xff261C14),
-                ),
+                style: AppTextStyles.input.copyWith(
+                  color: Color(0xff473426)
+                )
               ),
             ),
 
             Text(
               language,
-              style: TextStyle(
-                fontSize: 13.sp,
-                fontWeight: FontWeight.w300,
-                color: const Color(0xff261C14),
-              ),
+              style: AppTextStyles.caption.copyWith(
+                  color: Color(0xff473426).withOpacity(0.8)
+                )
             ),
 
             SizedBox(width: 8.w),

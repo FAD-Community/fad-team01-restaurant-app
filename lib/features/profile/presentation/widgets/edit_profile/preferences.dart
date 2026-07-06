@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ka3da/core/theme/text_styles.dart';
 
 final preferences = [
   "Vegetarian",
@@ -52,11 +53,7 @@ class _PreferencesState extends State<Preferences> {
             ),
             child: Text(
               item,
-              style: TextStyle(
-                fontSize: 13.sp,
-                color: isSelected ? Colors.white : const Color(0xff6E6259),
-                fontWeight: FontWeight.w300,
-              ),
+              style: AppTextStyles.caption.copyWith(color: Color(0xff473426))
             ),
           ),
         );

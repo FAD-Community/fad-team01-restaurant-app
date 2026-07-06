@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ka3da/core/theme/text_styles.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
@@ -39,11 +40,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             padding: EdgeInsets.only(bottom: 6.h, left: 2.w),
             child: Text(
               widget.label!,
-              style: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w400,
-                color: const Color(0xff261C14),
-              ),
+              style: AppTextStyles.body
             ),
           ),
 
@@ -53,10 +50,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           obscureText: isPassword ? _obscureText : false,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            hintStyle: TextStyle(
-              fontSize: 13.sp,
-              color: const Color(0xff473426).withOpacity(0.5),
-            ),
+            hintStyle: AppTextStyles.caption.copyWith(color: Color(0xff473426).withOpacity(0.3)),
 
             prefixIcon: widget.icon != null
                 ? Padding(
