@@ -13,16 +13,19 @@ class ForgetPasswordHeader extends StatelessWidget {
       children: [
         Text(
           'Forget Password?',
-          style: AppTextStyles.h1,
+          style: AppTextStyles.h1.copyWith(
+            color: AppColors.darkBackground
+          ),
         ),
 
         SizedBox(height: 8.h),
 
         Text(
           "Got you! Enter your email address below, and\nwe'll send you a code to reset it.",
-          style: AppTextStyles.bodyMedium.copyWith(
-            color: AppColors.textSecondary,
+          style: AppTextStyles.body.copyWith(
+            color: AppColors.darkerBackground,
             height: 1.5,
+            fontSize: 15
           ),
         ),
       ],

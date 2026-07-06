@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
 
 class OtpResendCode extends StatelessWidget {
@@ -11,7 +12,7 @@ class OtpResendCode extends StatelessWidget {
       children: [
 
         Text(
-          "Didn't receive it? ",
+          "Didn't receive it ? ",
           style: AppTextStyles.bodySecondary,
         ),
 
@@ -21,7 +22,7 @@ class OtpResendCode extends StatelessWidget {
           child: Text(
             "Resend Code",
             style: AppTextStyles.body.copyWith(
-              color: const Color(0xffB56A54),
+              color: AppColors.primary,
               decoration: TextDecoration.underline,
             ),
           ),

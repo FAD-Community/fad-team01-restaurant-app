@@ -19,6 +19,7 @@ class CreateAccountButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
+      height: 48.h,
       onPressed: () => _navigate(context),
       backgroundColor: AppColors.primary,
       child: Row(

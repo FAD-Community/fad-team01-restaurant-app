@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
 import 'package:ka3da/core/widgets/custom_button.dart';
@@ -45,15 +46,15 @@ class CreateNewPasswordForm extends StatelessWidget {
         SizedBox(height: 40.h),
 
         CustomButton(
+          height: 48.h,
+
           backgroundColor: AppColors.primary,
           onPressed: () {
             showPasswordUpdatedBottomSheet(context);
           },
           child: Text(
             'Reset Password',
-            style: AppTextStyles.bodySemiBold.copyWith(
-              color: AppColors.white,
-            ),
+            style: AppTextStyles.body.copyWith(color: AppColors.white),
           ),
         ),
       ],
@@ -65,10 +66,7 @@ class CreateNewPasswordForm extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 8.h),
       child: Align(
         alignment: Alignment.centerLeft,
-        child: Text(
-          title,
-          style: AppTextStyles.body,
-        ),
+        child: Text(title, style: AppTextStyles.body),
       ),
     );
   }
@@ -80,6 +78,8 @@ class CreateNewPasswordForm extends StatelessWidget {
     required VoidCallback onToggle,
   }) {
     return Container(
+      height: 48.h,
+
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(16.r),
@@ -89,12 +89,10 @@ class CreateNewPasswordForm extends StatelessWidget {
         style: AppTextStyles.bodyMedium,
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: AppTextStyles.bodyMedium.copyWith(
-            color: AppColors.textHint,
-          ),
-          prefixIcon: Icon(
-            icon,
-            color: AppColors.textHint,
+          hintStyle: AppTextStyles.caption.copyWith(color: AppColors.textHint),
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(14),
+            child: SvgPicture.asset("assets/create_account/LockSimple.svg"),
           ),
           suffixIcon: IconButton(
             onPressed: onToggle,
@@ -103,6 +101,7 @@ class CreateNewPasswordForm extends StatelessWidget {
                   ? Icons.visibility_off_outlined
                   : Icons.visibility_outlined,
               color: AppColors.textHint,
+              size: 16,
             ),
           ),
           border: OutlineInputBorder(
@@ -110,7 +109,7 @@ class CreateNewPasswordForm extends StatelessWidget {
             borderSide: BorderSide.none,
           ),
           filled: true,
-          fillColor: AppColors.white,
+          fillColor: AppColors.surfaceWhite,
         ),
       ),
     );

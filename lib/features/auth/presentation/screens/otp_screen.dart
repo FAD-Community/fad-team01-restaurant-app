@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ka3da/features/otp/presentation/widgets/otp_code_fields.dart';
-import 'package:ka3da/features/otp/presentation/widgets/otp_header.dart';
-import 'package:ka3da/features/otp/presentation/widgets/otp_progress.dart';
-import 'package:ka3da/features/otp/presentation/widgets/otp_resend_code.dart';
-import 'package:ka3da/features/otp/presentation/widgets/otp_verify_button.dart';
+import 'package:ka3da/features/auth/presentation/widgets/otp/otp_code_fields.dart';
+import 'package:ka3da/features/auth/presentation/widgets/otp/otp_header.dart';
+import 'package:ka3da/features/auth/presentation/widgets/otp/otp_progress.dart';
+import 'package:ka3da/features/auth/presentation/widgets/otp/otp_resend_code.dart';
+import 'package:ka3da/features/auth/presentation/widgets/otp/otp_verify_button.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});
@@ -34,19 +34,22 @@ class _OtpScreenState extends State<OtpScreen> {
 
               const SizedBox(height: 40),
 
-              OtpCodeFields(
-                onCompleted: (){
-                  setState(() {
-                    isCompleted = true;
-                  });
-                },
-                onChanged: (){
-                  if(isCompleted){
+              Container(
+                alignment:Alignment.center,
+                child: OtpCodeFields(
+                  onCompleted: (){
                     setState(() {
-                      isCompleted = false;
+                      isCompleted = true;
                     });
-                  }
-                },
+                  },
+                  onChanged: (){
+                    if(isCompleted){
+                      setState(() {
+                        isCompleted = false;
+                      });
+                    }
+                  },
+                ),
               ),
 
               const SizedBox(height: 40),

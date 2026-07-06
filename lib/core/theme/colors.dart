@@ -57,7 +57,7 @@ class AppColors {
   static const Color surfaceLight = Color(0xffF9F2E7);
 
   /// Divider/separator color in profile
-  static const Color surfaceDivider = Color(0xffEFE7DA);
+  static const Color surfaceDivider = Color(0xffE3D6BA);
 
   /// Settings separator
   static const Color surfaceSeparator = Color(0xffF2ECE4);
@@ -67,7 +67,7 @@ class AppColors {
   // ============================================================
 
   /// Inactive progress bar step
-  static const Color progressInactive = Color(0xFFE2DACC);
+  static const Color progressInactive = Color(0xFFE3D6BA);
 
   /// Active progress bar step (same as primary)
   static const Color progressActive = primary;

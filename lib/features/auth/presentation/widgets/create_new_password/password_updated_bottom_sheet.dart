@@ -68,9 +68,8 @@ void showPasswordUpdatedBottomSheet(BuildContext context) {
               },
               child: Text(
                 'Back To Log in',
-                style: AppTextStyles.bodySemiBold.copyWith(
-                  color: AppColors.white,
-                ),
+                       style: AppTextStyles.body.copyWith(color: AppColors.white),
+
               ),
             ),
           ],

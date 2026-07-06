@@ -4,6 +4,7 @@ import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
 import 'package:ka3da/core/widgets/custom_back_button.dart';
+import 'package:ka3da/features/auth/presentation/widgets/core/widgets/auth_title_sub.dart';
 
 class LoginHeader extends StatelessWidget {
   const LoginHeader({super.key});
@@ -13,25 +14,12 @@ class LoginHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-           CustomBackButton(),
-
+        CustomBackButton(),
 
         SizedBox(height: 24.h),
-
-        Text(
-          'Welcome Back',
-          style: AppTextStyles.h1.copyWith(
-            color: AppColors.darkBackground
-          ),
-        ),
-
-        SizedBox(height: 4.h),
-
-        Text(
-          'Sign in to continue your dining journey.',
-          style: AppTextStyles.body.copyWith(
-            color: AppColors.darkerBackground,
-          ),
+        AuthSubtitle(
+          "Sign in to continue your dining journey.",
+          "Welcome Back",
         ),
       ],
     );
