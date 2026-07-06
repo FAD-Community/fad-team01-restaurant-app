@@ -15,7 +15,7 @@ class LogoutCard extends StatelessWidget {
       ),
       child: ProfileMenuItem(
         icon:  SvgPicture.asset("assets/profile/list_profile/SignOut.svg"),
-        title: "Log out",
+        title: "Log out" ,
         showDivider: false,
       ),
     );

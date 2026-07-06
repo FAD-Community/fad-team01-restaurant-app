@@ -7,7 +7,7 @@ import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
 import 'package:ka3da/features/search/presentation/screens/discover_screen.dart';
 import 'package:ka3da/features/reservation/presentation/screens/bookings_screen.dart';
 import 'package:ka3da/features/favorites/presentation/screens/favorites_screen.dart';
-import 'package:ka3da/features/profile/presentation/screens/profile_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/profile/profile_screen.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -25,7 +25,7 @@ class _MainLayoutState extends State<MainLayout> {
         screen: const HomeScreen(),
         item: ItemConfig(
           title: "Home",
-          activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
+          activeColorSecondary: const Color(0xffAE292E).withValues(alpha: 0.2),
           activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
           icon: SvgPicture.asset(
             "assets/nav_bar/home.svg",
@@ -34,7 +34,7 @@ class _MainLayoutState extends State<MainLayout> {
           inactiveIcon: SvgPicture.asset(
             "assets/nav_bar/home.svg",
             colorFilter: ColorFilter.mode(
-              Color(0xffAE292E).withOpacity(0.4),
+              Color(0xffAE292E).withValues(alpha: 0.4),
               BlendMode.srcIn,
             ),
           ),
@@ -44,7 +44,7 @@ class _MainLayoutState extends State<MainLayout> {
         screen: const DiscoverScreen(),
         item: ItemConfig(
           title: "Discover",
-          activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
+          activeColorSecondary: const Color(0xffAE292E).withValues(alpha: 0.2),
           activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
           icon: SvgPicture.asset(
             "assets/nav_bar/search.svg",
@@ -53,7 +53,7 @@ class _MainLayoutState extends State<MainLayout> {
           inactiveIcon: SvgPicture.asset(
             "assets/nav_bar/search.svg",
             colorFilter: ColorFilter.mode(
-              Color(0xffAE292E).withOpacity(0.4),
+              Color(0xffAE292E).withValues(alpha: 0.4),
               BlendMode.srcIn,
             ),
           ),
@@ -63,7 +63,7 @@ class _MainLayoutState extends State<MainLayout> {
         screen: const BookingsScreen(),
         item: ItemConfig(
           title: "Bookings",
-          activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
+          activeColorSecondary: const Color(0xffAE292E).withValues(alpha: 0.2),
           activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
           icon: SvgPicture.asset(
             "assets/nav_bar/proicons_calendar.svg",
@@ -72,7 +72,7 @@ class _MainLayoutState extends State<MainLayout> {
           inactiveIcon: SvgPicture.asset(
             "assets/nav_bar/proicons_calendar.svg",
             colorFilter: ColorFilter.mode(
-              Color(0xffAE292E).withOpacity(0.4),
+              Color(0xffAE292E).withValues(alpha: 0.4),
               BlendMode.srcIn,
             ),
           ),
@@ -82,7 +82,7 @@ class _MainLayoutState extends State<MainLayout> {
         screen: const FavoritesScreen(),
         item: ItemConfig(
           title: "Favorites",
-          activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
+          activeColorSecondary: const Color(0xffAE292E).withValues(alpha: 0.2),
           activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
           icon: SvgPicture.asset(
             "assets/nav_bar/HeartStraight.svg",
@@ -91,7 +91,7 @@ class _MainLayoutState extends State<MainLayout> {
           inactiveIcon: SvgPicture.asset(
             "assets/nav_bar/HeartStraight.svg",
             colorFilter: ColorFilter.mode(
-              Color(0xffAE292E).withOpacity(0.4),
+              Color(0xffAE292E).withValues(alpha: 0.4),
               BlendMode.srcIn,
             ),
           ),
@@ -101,7 +101,7 @@ class _MainLayoutState extends State<MainLayout> {
         screen: const ProfileScreen(),
         item: ItemConfig(
           title: "Profile",
-          activeColorSecondary: const Color(0xffAE292E).withOpacity(0.2),
+          activeColorSecondary: const Color(0xffAE292E).withValues(alpha: 0.2),
           activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
           icon: SvgPicture.asset(
             "assets/nav_bar/User.svg",
@@ -110,7 +110,7 @@ class _MainLayoutState extends State<MainLayout> {
           inactiveIcon: SvgPicture.asset(
             "assets/nav_bar/User.svg",
             colorFilter: ColorFilter.mode(
-              Color(0xffAE292E).withOpacity(0.4),
+              Color(0xffAE292E).withValues(alpha: 0.4),
               BlendMode.srcIn,
             ),
           ),

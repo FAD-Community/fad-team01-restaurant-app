@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ka3da/core/routing/app_routes.dart';
+import 'package:ka3da/features/intro/presentation/widgets/splash/splash_logo.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,65 +11,69 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _scaleAnimation;
-  late Animation<double> _fadeAnimation;
+
+  late final AnimationController controller;
+
+  late final Animation<double> scaleAnimation;
+  late final Animation<double> fadeAnimation;
 
   @override
   void initState() {
     super.initState();
 
-    _animationController = AnimationController(
+    controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
     );
 
-    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.easeOutBack),
+    scaleAnimation = Tween(
+      begin: .5,
+      end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Curves.easeOutBack,
+      ),
     );
 
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
+    fadeAnimation = Tween(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Curves.easeIn,
+      ),
     );
 
-    _animationController.forward();
+    controller.forward();
 
-    _navigateToNext();
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        if (!mounted) return;
+
+        Navigator.pushReplacementNamed(
+          context,
+          AppRoutes.onboardingscreen,
+        );
+      },
+    );
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    controller.dispose();
     super.dispose();
-  }
-
-  void _navigateToNext() {
-    Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
-        Navigator.pushReplacementNamed(context, AppRoutes.onboardingscreen);
-      }
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FadeTransition(
-              opacity: _fadeAnimation,
-              child: ScaleTransition(
-                scale: _scaleAnimation,
-                child: SvgPicture.asset(
-                  'assets/splash/logo_svg_no_bg.svg',
-                  width: 210.w,
-                  height: 210.h,
-                ),
-              ),
-            ),
-          ],
+        child: SplashLogo(
+          fadeAnimation: fadeAnimation,
+          scaleAnimation: scaleAnimation,
         ),
       ),
     );

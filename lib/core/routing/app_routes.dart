@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:ka3da/features/auth/presentation/screens/auth_gate_screen.dart';
+import 'package:ka3da/features/auth/presentation/screens/create_account_screen.dart';
+import 'package:ka3da/features/auth/presentation/screens/create_new_password_screen.dart';
+import 'package:ka3da/features/auth/presentation/screens/forget_password_screen.dart';
+import 'package:ka3da/features/auth/presentation/screens/login_screen.dart';
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
-import 'package:ka3da/features/intro/presentation/screens/auth_gate_screen.dart';
-import 'package:ka3da/features/intro/presentation/screens/create_account_screen.dart';
-import 'package:ka3da/features/intro/presentation/screens/forget_password_screen.dart';
-import 'package:ka3da/features/intro/presentation/screens/login_screen.dart';
-import 'package:ka3da/features/intro/presentation/screens/on_boarding_screen.dart';
-import 'package:ka3da/features/intro/presentation/screens/otp_screen.dart';
-import 'package:ka3da/features/intro/presentation/screens/create_new_password_screen.dart';
+import 'package:ka3da/features/intro/presentation/screens/abdahlla/splash_screen.dart';
+import 'package:ka3da/features/intro/presentation/screens/onboarding_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/splash_screen.dart';
-import 'package:ka3da/features/profile/presentation/screens/profile_screen.dart';
-import 'package:ka3da/features/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:ka3da/features/otp/presentation/screens/otp_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/change_password/change_password_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/privacy_policy_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/profile/profile_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/edit_profile/edit_profile_screen.dart';
 import 'package:ka3da/features/layout/presentation/screens/main_layout.dart';
-import 'package:ka3da/features/profile/presentation/screens/settings_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/settings/settings_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -20,6 +23,8 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String editProfile = '/editProfile';
   static const String settingspage = '/sttings';
+  static const String changePassword = '/changePassword';
+  static const String privacyPolicyScreen = '/privacyPolicyScreen';
   static const String onboardingscreen = '/onboarding';
   static const String authGateScreen = '/authGateScreen';
   static const String createAccountScreen = '/createAccountScreen';
@@ -99,15 +104,23 @@ class AppRoutes {
           settings: settings,
           builder: (_) => const CreateNewPasswordScreen(),
         );
+      case changePassword:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const ChangePasswordScreen(),
+        );
+      case privacyPolicyScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const PrivacyPolicyScreen(),
+        );
 
       //==============================================================================
       default:
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const Scaffold(
-            body: Center(
-              child: Text('Screen does not exist!'),
-            ),
+            body: Center(child: Text('Screen does not exist!')),
           ),
         );
     }

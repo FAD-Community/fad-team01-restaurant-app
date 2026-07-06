@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:ka3da/features/profile/presentation/screens/edit_profile_screen.dart';
-import 'package:ka3da/features/profile/presentation/screens/settings_screen.dart';
+import 'package:ka3da/core/theme/text_styles.dart';
+import 'package:ka3da/features/profile/presentation/screens/about_qa3da/about_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/edit_profile/edit_profile_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/settings/settings_screen.dart';
+import 'package:ka3da/features/profile/presentation/screens/help/support_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class ProfileMenuItem extends StatelessWidget {
@@ -50,10 +53,9 @@ class ProfileMenuItem extends StatelessWidget {
                 Expanded(
                   child: Text(
                     title,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    style: AppTextStyles.input.copyWith(
+                      color: Colors.black
+                    )
                   ),
                 ),
 
@@ -112,6 +114,9 @@ List<ProfileMenuModel> menuItems(BuildContext context) {
     ProfileMenuModel(
       icon: SvgPicture.asset("assets/profile/list_profile/Info.svg"),
       title: "About Qa3da",
+      onTap: () {
+        pushScreen(context, screen: const AboutScreen(), withNavBar: false);
+      },
     ),
     ProfileMenuModel(
       icon: SvgPicture.asset(
@@ -123,6 +128,9 @@ List<ProfileMenuModel> menuItems(BuildContext context) {
       icon: SvgPicture.asset("assets/profile/list_profile/Headset.svg"),
       title: "Help & Support",
       showDivider: false,
+      onTap: () {
+        pushScreen(context, screen: const SupportScreen(), withNavBar: false);
+      },
     ),
   ];
 }

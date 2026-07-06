@@ -15,7 +15,7 @@ class CustomBackButton extends StatelessWidget {
         height: 44.w,
         width: 44.w,
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: AppColors.surfaceWhite,
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
