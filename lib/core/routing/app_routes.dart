@@ -5,6 +5,7 @@ import 'package:ka3da/features/auth/presentation/screens/create_new_password_scr
 import 'package:ka3da/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:ka3da/features/auth/presentation/screens/login_screen.dart';
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
+import 'package:ka3da/features/home/presentation/screens/restaurant_detail.dart';
 import 'package:ka3da/features/intro/presentation/screens/abdahlla/splash_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/onboarding_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/splash_screen.dart';
@@ -32,6 +33,7 @@ class AppRoutes {
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
   static const String otpScreen = '/otpScreen';
   static const String createNewPasswordScreen = '/createNewPasswordScreen';
+  static const String restaurantDetailsScreen = '/restaurantDetailsScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -113,6 +115,11 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const PrivacyPolicyScreen(),
+        );
+      case restaurantDetailsScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const RestaurantDetails(),
         );
 
       //==============================================================================
