@@ -5,10 +5,12 @@ import 'package:ka3da/features/auth/presentation/screens/create_new_password_scr
 import 'package:ka3da/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:ka3da/features/auth/presentation/screens/login_screen.dart';
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
-import 'package:ka3da/features/intro/presentation/screens/abdahlla/splash_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/onboarding_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/splash_screen.dart';
 import 'package:ka3da/features/auth/presentation/screens/otp_screen.dart';
+import 'package:ka3da/features/nearby/presentation/screens/mapscreen.dart';
+import 'package:ka3da/features/nearby/presentation/screens/nearby.dart';
+import 'package:ka3da/features/nearby/presentation/widgets/card/card_model.dart';
 import 'package:ka3da/features/profile/presentation/screens/change_password/change_password_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/privacy_policy_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/profile/profile_screen.dart';
@@ -32,6 +34,8 @@ class AppRoutes {
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
   static const String otpScreen = '/otpScreen';
   static const String createNewPasswordScreen = '/createNewPasswordScreen';
+  static const String nearbyRestaurants = '/Nearby';
+  static const String mapscreen = '/mapscreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -113,6 +117,17 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const PrivacyPolicyScreen(),
+        );
+      case nearbyRestaurants:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const Nearby(),
+        );
+      case mapscreen:
+        final restaurant = settings.arguments as RestaurantEntity;
+
+        return MaterialPageRoute(
+          builder: (_) => Mapscreen(restaurant: restaurant),
         );
 
       //==============================================================================
