@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ka3da/features/booking/presentation/screens/bookings_screen.dart';
 import 'package:ka3da/features/layout/presentation/widget/navigation_controller.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
-import 'package:ka3da/features/search/presentation/screens/discover_screen.dart';
-import 'package:ka3da/features/reservation/presentation/screens/bookings_screen.dart';
+import 'package:ka3da/features/discover/presentation/screens/discover_screen.dart';
 import 'package:ka3da/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/profile/profile_screen.dart';
 

@@ -28,9 +28,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animations: ^2.2.0
   cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.8
   curving_reality_library: ^1.2.2
+  dartz: ^0.10.1
+  data_connection_checker_tv: ^0.3.5-nullsafety
   device_preview: ^1.3.1
   dio: ^5.9.2
   dots_indicator: ^4.0.1
@@ -38,18 +41,25 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_launcher_icons: ^0.14.4
   flutter_otp_text_field: ^1.5.1+1
   flutter_screenutil: ^5.9.3
   flutter_secure_storage: ^10.3.1
+  flutter_staggered_animations: ^1.1.1
   flutter_svg: ^2.3.0
   flutter_switch: ^0.3.2
+  flutter_typeahead: ^6.0.0
   font_awesome_flutter: ^10.12.0
   gap: ^3.0.1
+  geocoding: ^4.0.0
+  geolocator: ^14.0.3
   get_it: ^9.2.1
   glassmorphism: ^3.0.0
   go_router: ^17.3.0
   google_fonts: ^8.1.0
+  google_maps_flutter: ^2.17.1
   image_picker: ^1.2.3
+  implicitly_animated_reorderable_list_2: ^0.6.0
   internet_connection_checker_plus: ^3.1.0
   json_annotation: ^4.12.0
   lottie: ^3.4.0
@@ -63,6 +73,12 @@ dependencies:
   url_launcher: ^6.3.2
 
 dev_dependencies:
+   flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon_app/icon_app.png" 
   build_runner: ^2.15.0
   flutter_lints: ^6.0.0
   flutter_test:

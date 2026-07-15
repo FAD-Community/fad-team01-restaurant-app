@@ -32,14 +32,12 @@ static const String heroFont = 'DMSerifDisplay';
     fontFamily: bodyFont,
     fontSize: 25.sp,
     fontWeight: FontWeight.w700,
-    color:  Color.fromARGB(255, 255, 255, 255),
   );
 
   static TextStyle h2 = TextStyle(
     fontFamily: bodyFont,
     fontSize: 20.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.textDark,
   );
 
   //==========================
@@ -156,5 +154,4 @@ static const String heroFont = 'DMSerifDisplay';
     color: AppColors.primary,
   );
 
-  static TextStyle? get bodySecondary => null;
 }

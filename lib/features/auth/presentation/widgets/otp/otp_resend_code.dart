@@ -13,7 +13,7 @@ class OtpResendCode extends StatelessWidget {
 
         Text(
           "Didn't receive it ? ",
-          style: AppTextStyles.bodySecondary,
+          style: AppTextStyles.bodyMedium,
         ),
 
         GestureDetector(

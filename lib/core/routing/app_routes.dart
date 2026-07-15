@@ -13,6 +13,9 @@ import 'package:ka3da/features/notifications/presentation/screens/notifications_
 import 'package:ka3da/features/intro/presentation/screens/onboarding_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/splash_screen.dart';
 import 'package:ka3da/features/auth/presentation/screens/otp_screen.dart';
+import 'package:ka3da/features/nearby/presentation/screens/mapscreen.dart';
+import 'package:ka3da/features/nearby/presentation/screens/nearby.dart';
+import 'package:ka3da/features/nearby/presentation/widgets/card/card_model.dart';
 import 'package:ka3da/features/profile/presentation/screens/change_password/change_password_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/privacy_policy_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/profile/profile_screen.dart';

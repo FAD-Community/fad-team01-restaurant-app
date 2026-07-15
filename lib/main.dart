@@ -1,10 +1,12 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
+import 'package:ka3da/features/nearby/presentation/cubit/location/location_cubit.dart';
 
 void main() {
   runApp(
@@ -28,17 +30,23 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            useMaterial3: true,
-            fontFamily: AppTextStyles.bodyFont,
-            colorScheme: ColorScheme.fromSeed(seedColor: Color(0xffFAF3E6)),
-            scaffoldBackgroundColor: Color(0xffFAF3E6),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => LocationCubit()..loadRestaurants()),
+          ],
+
+          child: MaterialApp(
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              useMaterial3: true,
+              fontFamily: AppTextStyles.bodyFont,
+              colorScheme: ColorScheme.fromSeed(seedColor: Color(0xffFAF3E6)),
+              scaffoldBackgroundColor: Color(0xffFAF3E6),
+            ),
+            initialRoute: AppRoutes.splash,
+            onGenerateRoute: AppRoutes.generateRoute,
           ),
-          initialRoute: AppRoutes.splash,
-          onGenerateRoute: AppRoutes.generateRoute,
         );
       },
     );
