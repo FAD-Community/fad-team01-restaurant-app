@@ -5,6 +5,11 @@ import 'package:ka3da/features/auth/presentation/screens/create_new_password_scr
 import 'package:ka3da/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:ka3da/features/auth/presentation/screens/login_screen.dart';
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
+import 'package:ka3da/features/home/presentation/screens/restaurant_detail.dart';
+import 'package:ka3da/features/home/presentation/screens/reserve_table_screen.dart';
+import 'package:ka3da/features/home/presentation/screens/review_reservation_screen.dart';
+import 'package:ka3da/features/home/presentation/screens/deposit_payment_screen.dart';
+import 'package:ka3da/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/onboarding_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/splash_screen.dart';
 import 'package:ka3da/features/auth/presentation/screens/otp_screen.dart';
@@ -34,8 +39,11 @@ class AppRoutes {
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
   static const String otpScreen = '/otpScreen';
   static const String createNewPasswordScreen = '/createNewPasswordScreen';
-  static const String nearbyRestaurants = '/Nearby';
-  static const String mapscreen = '/mapscreen';
+  static const String restaurantDetailsScreen = '/restaurantDetailsScreen';
+  static const String reserveTabelScreen = '/reserveTabelScreen';
+  static const String reviewReservationScreen = '/reviewReservationScreen';
+  static const String depositPaymentScreen = '/depositPaymentScreen';
+  static const String notificationsScreen = '/notificationsScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -118,16 +126,30 @@ class AppRoutes {
           settings: settings,
           builder: (_) => const PrivacyPolicyScreen(),
         );
-      case nearbyRestaurants:
+      case restaurantDetailsScreen:
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => const Nearby(),
+          builder: (_) => const RestaurantDetails(),
         );
-      case mapscreen:
-        final restaurant = settings.arguments as RestaurantEntity;
-
+      case reserveTabelScreen:
         return MaterialPageRoute(
-          builder: (_) => Mapscreen(restaurant: restaurant),
+          settings: settings,
+          builder: (_) => const ReserveTableScreen(),
+        );
+      case reviewReservationScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const ReviewReservationScreen(),
+        );
+      case depositPaymentScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const DepositPaymentScreen(),
+        );
+      case notificationsScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const NotificationsScreen(),
         );
 
       //==============================================================================
