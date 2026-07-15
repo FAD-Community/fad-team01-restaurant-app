@@ -1,4 +1,4 @@
-import 'package:ka3da/features/nearby/presentation/widgets/card/card_model.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 
 final List<RestaurantEntity> dummyRestaurants = [
   RestaurantEntity(

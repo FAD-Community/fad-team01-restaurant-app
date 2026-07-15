@@ -106,6 +106,7 @@ flutter:
     - assets/splash/
     - assets/create_account/
     - assets/nearby/
+    - assets/discover/
     - assets/nearby/data/restaurants.json
     - assets/icon_app/
 

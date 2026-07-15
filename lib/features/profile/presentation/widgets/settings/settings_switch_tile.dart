@@ -37,21 +37,25 @@ class SettingsSwitchTile extends StatelessWidget {
                     children: [
                       Gap(8.h),
 
-                      Text(
-                        title,
-                        style: AppTextStyles.input.copyWith(
-                  color: Color(0xff473426)
-                )
+                      Expanded(
+                        child: Text(
+                          title,
+                          style: AppTextStyles.input.copyWith(
+                            color: Color(0xff473426),
+                          ),
+                        ),
                       ),
 
                       if (subtitle != null) ...[
-                        Gap(8.h),
+                        Gap(7.h),
 
-                        Text(
-                          subtitle!,
-                          style: AppTextStyles.subtitle.copyWith(
-                  color: Color(0xff473426)
-                )
+                        Expanded(
+                          child: Text(
+                            subtitle!,
+                            style: AppTextStyles.subtitle.copyWith(
+                              color: Color(0xff473426),
+                            ),
+                          ),
                         ),
                       ],
                     ],

@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:ka3da/features/nearby/data/data/cities.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 import 'package:ka3da/features/nearby/data/models/city_model.dart';
-import 'package:ka3da/features/nearby/presentation/widgets/card/card_model.dart';
 import 'package:ka3da/features/nearby/services/location_service.dart';
 import 'package:ka3da/features/nearby/services/restaurant_local_service.dart';
 
@@ -25,13 +25,7 @@ class LocationCubit extends Cubit<LocationState> {
         .where((e) => e.cityId == city.id)
         .toList();
 
-    emit(
-      state.copyWith(
-        selectedCity: city,
-        restaurants: restaurants,
-        searchQuery: "",
-      ),
-    );
+    emit(state.copyWith(selectedCity: city, restaurants: restaurants));
   }
 
   Future<void> getCurrentLocation() async {
@@ -65,95 +59,7 @@ class LocationCubit extends Cubit<LocationState> {
     }
   }
 
-  void searchRestaurants(String query) {
-    List<RestaurantEntity> list;
-
-    if (query.trim().isEmpty) {
-      if (state.selectedCity != null) {
-        list = state.allRestaurants
-            .where((e) => e.cityId == state.selectedCity!.id)
-            .toList();
-      } else {
-        list = state.allRestaurants;
-      }
-
-      emit(state.copyWith(restaurants: list, searchQuery: ""));
-
-      return;
-    }
-
-    list = state.allRestaurants.where((restaurant) {
-      final matchName = restaurant.name.toLowerCase().contains(
-        query.toLowerCase(),
-      );
-
-      if (state.selectedCity == null) {
-        return matchName;
-      }
-
-      return matchName && restaurant.cityId == state.selectedCity!.id;
-    }).toList();
-
-    emit(state.copyWith(restaurants: list, searchQuery: query));
-  }
-
-  void addRecent(RestaurantEntity restaurant) {
-    final recent = List<RestaurantEntity>.from(state.recentSearches);
-
-    recent.removeWhere((e) => e.id == restaurant.id);
-
-    recent.insert(0, restaurant);
-
-    if (recent.length > 8) {
-      recent.removeLast();
-    }
-
-    emit(state.copyWith(recentSearches: recent));
-  }
-
-  void clearRecentSearches() {
-    emit(state.copyWith(recentSearches: []));
-  }
-
-  List<RestaurantEntity> getSuggestions(String query) {
-    if (query.trim().isEmpty) {
-      return state.recentSearches;
-    }
-
-    return state.allRestaurants.where((restaurant) {
-      final match = restaurant.name.toLowerCase().contains(query.toLowerCase());
-
-      if (state.selectedCity == null) {
-        return match;
-      }
-
-      return match && restaurant.cityId == state.selectedCity!.id;
-    }).toList();
-  }
-
-  void selectSuggestion(RestaurantEntity restaurant) {
-    addRecent(restaurant);
-
-    moveRestaurantToTop(restaurant);
-
-    emit(state.copyWith(searchQuery: restaurant.name));
-  }
-
-  void moveRestaurantToTop(RestaurantEntity restaurant) {
-    final list = List<RestaurantEntity>.from(state.restaurants);
-
-    list.removeWhere((e) => e.id == restaurant.id);
-
-    list.insert(0, restaurant);
-
-    emit(state.copyWith(restaurants: list));
-  }
-
-  void removeRecent(RestaurantEntity restaurant) {
-    final list = List<RestaurantEntity>.from(state.recentSearches);
-
-    list.removeWhere((e) => e.id == restaurant.id);
-
-    emit(state.copyWith(recentSearches: list));
+  void setRestaurants(List<RestaurantEntity> restaurants) {
+    emit(state.copyWith(restaurants: restaurants));
   }
 }

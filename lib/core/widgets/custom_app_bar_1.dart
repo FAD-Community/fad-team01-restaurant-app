@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyCustomAppBarOne extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  
+
   final Widget? action;
   final Color textColor;
   final Color appbarColor;
@@ -24,8 +24,6 @@ class MyCustomAppBarOne extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final w = MediaQuery.of(context).size.width;
-    // final h = MediaQuery.of(context).size.height;
     return AppBar(
       surfaceTintColor: Colors.transparent,
       elevation: 0,
@@ -33,9 +31,9 @@ class MyCustomAppBarOne extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 12.w,
       title: Padding(
         padding: EdgeInsets.only(top: 0, bottom: 20.h),
-        child: Text(title, style: AppTextStyles.h1 ),
+        child: Text(title, style: AppTextStyles.h1),
       ),
-      backgroundColor: appbarColor, // لون الخلفية
+      backgroundColor: appbarColor,
       leading: Padding(
         padding: EdgeInsets.only(left: 16.w, bottom: 20.h),
         child: Back(onPressed: onPressed),
