@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
 import 'package:ka3da/core/widgets/custom_button.dart';
@@ -72,10 +73,7 @@ class OverviewTab extends StatelessWidget {
                   ],
                 ),
                 Gap(12),
-                Divider(
-                  color: Colors.grey[200],
-                  height: 1,
-                ),
+                Divider(color: Colors.grey[200], height: 1),
                 Gap(12),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +99,12 @@ class OverviewTab extends StatelessWidget {
             ),
           ),
           Gap(24),
-          CustomButton(onPressed: (){}, child: Text('Reserve Table' , style: AppTextStyles.button,))
+          CustomButton(
+            onPressed: () {
+              Navigator.pushNamed(context, AppRoutes.reserveTabelScreen);
+            },
+            child: Text('Reserve Table', style: AppTextStyles.button),
+          ),
         ],
       ),
     );
