@@ -1,4 +1,6 @@
-class RestaurantEntity {
+import 'package:ka3da/core/widgets/search/models/searchable.dart';
+
+class RestaurantEntity implements Searchable {
   final int? id;
   final int? cityId;
 
@@ -9,7 +11,6 @@ class RestaurantEntity {
 
   final double rating;
   final int time;
-
   final bool isOpen;
   final bool isFavorite;
 
@@ -47,4 +48,13 @@ class RestaurantEntity {
       longitude: (json["longitude"] as num).toDouble(),
     );
   }
+
+  @override
+  String get title => name;
+
+  @override
+  String get subtitle => category;
+
+  @override
+  String? get imageUrl => image;
 }

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
-import 'package:ka3da/features/nearby/presentation/widgets/card/card_model.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 import 'package:ka3da/features/nearby/presentation/widgets/card/custom_button.dart';
 import 'package:ka3da/features/nearby/presentation/widgets/card/image_card.dart';
 

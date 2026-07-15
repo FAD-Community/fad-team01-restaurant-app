@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:ka3da/features/nearby/presentation/widgets/card/card_model.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 
 class MapSample extends StatefulWidget {
   const MapSample({super.key, required this.restaurant});

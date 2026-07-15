@@ -7,7 +7,6 @@ import 'package:ka3da/features/auth/presentation/widgets/core/widgets/auth_foote
 import 'package:ka3da/features/auth/presentation/widgets/core/widgets/auth_social_section.dart';
 import 'package:ka3da/features/auth/presentation/widgets/create_account/create_account_form.dart';
 import 'package:ka3da/features/auth/presentation/widgets/create_account/create_account_header.dart';
-import 'package:ka3da/features/auth/presentation/widgets/create_new_password/create_new_password_progress.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});

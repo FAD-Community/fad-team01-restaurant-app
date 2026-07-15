@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/features/layout/presentation/widget/navigation_controller.dart';
 import 'package:ka3da/features/profile/presentation/widgets/my_custom_app_Bar.dart';
 
@@ -14,12 +15,10 @@ class BookingsScreen extends StatelessWidget {
         },
         title: "Booking",
         textColor: Colors.white,
-        appbarColor: const Color(0xff1A130D),
+        appbarColor: AppColors.surfaceWhite,
       ),
       body: Column(
         children: [
-          Row(),
-          Column(children: [Text("CUISINE")]),
         ],
       ),
     );

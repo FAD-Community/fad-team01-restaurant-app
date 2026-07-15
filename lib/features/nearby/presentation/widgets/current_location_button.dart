@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:ka3da/core/theme/colors.dart';
+import 'package:ka3da/core/widgets/search/cubit/search_cubit.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 import 'package:ka3da/features/nearby/presentation/cubit/location/location_cubit.dart';
 import 'package:ka3da/features/nearby/presentation/cubit/location/location_state.dart';
 import 'package:ka3da/features/nearby/presentation/widgets/location_dialog.dart';
@@ -16,11 +18,18 @@ class LocationButton extends StatelessWidget {
     return InkWell(
       onTap: () async {
         try {
-          await context.read<LocationCubit>().getCurrentLocation();
+          final locationCubit = context.read<LocationCubit>();
+
+          await locationCubit.getCurrentLocation();
+
+          context.read<SearchCubit<RestaurantEntity>>().filter(
+            locationCubit.state.restaurants,
+          );
         } catch (e) {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(e.toString())));
+
           if (!context.mounted) return;
 
           final error = e.toString();

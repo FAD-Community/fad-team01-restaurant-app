@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
 
 final preferences = [
@@ -53,7 +52,7 @@ class _PreferencesState extends State<Preferences> {
             ),
             child: Text(
               item,
-              style: AppTextStyles.caption.copyWith(color: Color(0xff473426))
+              style: AppTextStyles.caption.copyWith(color: Color(0xff473426)),
             ),
           ),
         );

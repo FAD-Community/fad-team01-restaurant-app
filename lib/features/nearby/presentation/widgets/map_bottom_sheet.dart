@@ -2,7 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:ka3da/features/nearby/presentation/widgets/card/card_model.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 import 'package:ka3da/features/nearby/presentation/widgets/card/restaurant_card.dart';
 
 class MapBottomSheet extends StatelessWidget {

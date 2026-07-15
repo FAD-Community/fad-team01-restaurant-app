@@ -105,8 +105,11 @@ flutter:
     - assets/nav_bar/
     - assets/splash/
     - assets/create_account/
-    - assets/main_flow/
-    - assets/icons/
+    - assets/nearby/
+    - assets/discover/
+    - assets/nearby/data/restaurants.json
+    - assets/icon_app/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
