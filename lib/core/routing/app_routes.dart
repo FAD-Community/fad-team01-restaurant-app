@@ -9,6 +9,7 @@ import 'package:ka3da/features/home/presentation/screens/restaurant_detail.dart'
 import 'package:ka3da/features/home/presentation/screens/reserve_table_screen.dart';
 import 'package:ka3da/features/home/presentation/screens/review_reservation_screen.dart';
 import 'package:ka3da/features/home/presentation/screens/deposit_payment_screen.dart';
+import 'package:ka3da/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/onboarding_screen.dart';
 import 'package:ka3da/features/intro/presentation/screens/splash_screen.dart';
 import 'package:ka3da/features/auth/presentation/screens/otp_screen.dart';
@@ -39,6 +40,7 @@ class AppRoutes {
   static const String reserveTabelScreen = '/reserveTabelScreen';
   static const String reviewReservationScreen = '/reviewReservationScreen';
   static const String depositPaymentScreen = '/depositPaymentScreen';
+  static const String notificationsScreen = '/notificationsScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -140,6 +142,11 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const DepositPaymentScreen(),
+        );
+      case notificationsScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const NotificationsScreen(),
         );
 
       //==============================================================================

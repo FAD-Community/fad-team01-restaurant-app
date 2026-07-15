@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
-import 'package:ka3da/features/home/presentation/widgets/info_cards.dart';
-import 'package:ka3da/features/home/presentation/widgets/product_image_and_actions.dart';
-import 'package:ka3da/features/home/presentation/widgets/restaurant_keywords.dart';
-import 'package:ka3da/features/home/presentation/widgets/overview_tab.dart';
-import 'package:ka3da/features/home/presentation/widgets/menu_tab.dart';
-import 'package:ka3da/features/home/presentation/widgets/reviews_tab.dart';
+import 'package:ka3da/features/home/presentation/widgets/restaurant_detail/info_cards.dart';
+import 'package:ka3da/features/home/presentation/widgets/restaurant_detail/product_image_and_actions.dart';
+import 'package:ka3da/features/home/presentation/widgets/restaurant_detail/restaurant_keywords.dart';
+import 'package:ka3da/features/home/presentation/widgets/restaurant_detail/overview_tab.dart';
+import 'package:ka3da/features/home/presentation/widgets/restaurant_detail/menu_tab.dart';
+import 'package:ka3da/features/home/presentation/widgets/restaurant_detail/reviews_tab.dart';
 
 class RestaurantDetails extends StatefulWidget {
   const RestaurantDetails({super.key});

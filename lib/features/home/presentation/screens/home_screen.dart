@@ -4,11 +4,11 @@ import 'package:gap/gap.dart';
 import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
-import 'package:ka3da/features/home/presentation/widgets/actions_buttons.dart';
-import 'package:ka3da/features/home/presentation/widgets/categories_widget.dart';
-import 'package:ka3da/features/home/presentation/widgets/greating_widget.dart';
-import 'package:ka3da/features/home/presentation/widgets/restaurant_card.dart';
-import 'package:ka3da/features/home/presentation/widgets/search_bar.dart';
+import 'package:ka3da/features/home/presentation/widgets/home/actions_buttons.dart';
+import 'package:ka3da/features/home/presentation/widgets/home/categories_widget.dart';
+import 'package:ka3da/features/home/presentation/widgets/home/greating_widget.dart';
+import 'package:ka3da/features/home/presentation/widgets/home/restaurant_card.dart';
+import 'package:ka3da/features/home/presentation/widgets/home/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

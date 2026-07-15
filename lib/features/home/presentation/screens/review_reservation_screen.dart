@@ -5,6 +5,10 @@ import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
 import 'package:ka3da/core/widgets/custom_button.dart';
+import 'package:ka3da/features/home/presentation/widgets/deposit_payment/alert_note.dart';
+import 'package:ka3da/features/home/presentation/widgets/reserve_table/step_pill.dart';
+import 'package:ka3da/features/home/presentation/widgets/review_reservation/reservation_details_card.dart';
+import 'package:ka3da/features/home/presentation/widgets/review_reservation/restaurant_preview_card.dart';
 
 class ReviewReservationArgs {
   final DateTime? date;
@@ -35,56 +39,6 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
 
   String _formatDate(DateTime date) {
     return '${_months[date.month - 1]} ${date.day}, ${date.year}';
-  }
-
-  Widget _buildStepPill(String title, {required bool isActive}) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
-      decoration: BoxDecoration(
-        color: isActive ? AppColors.primary : const Color(0xffEEDEC9),
-        borderRadius: BorderRadius.circular(100.r),
-      ),
-      child: Text(
-        title,
-        style: AppTextStyles.captionlarge.copyWith(
-          fontSize: 12.sp,
-          fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-          color: isActive ? Colors.white : const Color(0xff8C7461),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildDetailRow(IconData icon, String label, String value) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 14.h),
-      child: Row(
-        children: [
-          Icon(
-            icon,
-            color: const Color(0xffA89785),
-            size: 22.sp,
-          ),
-          Gap(12),
-          Text(
-            label,
-            style: AppTextStyles.body.copyWith(
-              fontSize: 15.sp,
-              color: const Color(0xffA89785),
-            ),
-          ),
-          const Spacer(),
-          Text(
-            value,
-            style: AppTextStyles.bodyMedium.copyWith(
-              fontSize: 15.sp,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textDark,
-            ),
-          ),
-        ],
-      ),
-    );
   }
 
   @override
@@ -124,7 +78,7 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                           ),
                         ),
                       ),
-                      Gap(16),
+                      Gap(16.w),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -146,7 +100,7 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                       ),
                     ],
                   ),
-                  Gap(16),
+                  Gap(16.h),
                   Text(
                     'Step 2 of 3',
                     style: AppTextStyles.caption.copyWith(
@@ -154,7 +108,7 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                       color: const Color(0xff8C7461),
                     ),
                   ),
-                  Gap(8),
+                  Gap(8.h),
                   Container(
                     height: 6.h,
                     width: double.infinity,
@@ -180,13 +134,13 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                       ],
                     ),
                   ),
-                  Gap(12),
+                  Gap(12.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildStepPill('Details', isActive: true),
-                      _buildStepPill('Review', isActive: true),
-                      _buildStepPill('Payment', isActive: false),
+                    children: const [
+                      StepPill(title: 'Details', isActive: true),
+                      StepPill(title: 'Review', isActive: true),
+                      StepPill(title: 'Payment', isActive: false),
                     ],
                   ),
                 ],
@@ -201,120 +155,26 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Restaurant Card
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
-                      clipBehavior: Clip.antiAlias,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/main_flow/example.png',
-                            height: 180.h,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'The Grill House',
-                                  style: AppTextStyles.h2.copyWith(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.textDark,
-                                  ),
-                                ),
-                                Gap(4),
-                                Text(
-                                  'Steakhouse . New Cairo',
-                                  style: AppTextStyles.caption.copyWith(
-                                    fontSize: 14.sp,
-                                    color: const Color(0xffA89785),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    const RestaurantPreviewCard(),
                     
-                    Gap(20),
+                    Gap(20.h),
                     
                     // Reservation Details Card
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Reservation Details',
-                            style: AppTextStyles.h2.copyWith(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.textDark,
-                            ),
-                          ),
-                          Gap(8),
-                          _buildDetailRow(
-                            Icons.calendar_today_outlined, 
-                            'Date', 
-                            _formatDate(displayDate),
-                          ),
-                          Divider(color: Colors.grey[200], height: 1),
-                          _buildDetailRow(
-                            Icons.access_time_outlined, 
-                            'Time', 
-                            displayTime,
-                          ),
-                          Divider(color: Colors.grey[200], height: 1),
-                          _buildDetailRow(
-                            Icons.people_outline_rounded, 
-                            'Party Size', 
-                            '$displayGuests guests',
-                          ),
-                        ],
-                      ),
+                    ReservationDetailsCard(
+                      date: _formatDate(displayDate),
+                      time: displayTime,
+                      guests: '$displayGuests guests',
                     ),
                     
-                    Gap(12),
+                    Gap(12.h),
                     
                     // Refundable Deposit Alert Row
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.info_outline_rounded,
-                          color: const Color(0xffA33E32),
-                          size: 16.sp,
-                        ),
-                        Gap(6),
-                        Expanded(
-                          child: Text(
-                            'A refundable deposit is required to confirm this booking',
-                            style: TextStyle(
-                              fontFamily: AppTextStyles.bodyFont,
-                              fontSize: 12.sp,
-                              color: const Color(0xffA33E32),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ],
+                    const AlertNote(
+                      text:
+                          'A refundable deposit is required to confirm this booking',
                     ),
                     
-                    Gap(24),
+                    Gap(24.h),
                     
                     // Payment Buttons
                     CustomButton(
@@ -331,7 +191,7 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                       ),
                     ),
                     
-                    Gap(12),
+                    Gap(12.h),
                     
                     CustomButton(
                       backgroundColor: const Color(0xffFAF3E6),
@@ -346,7 +206,7 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                         ),
                       ),
                     ),
-                    Gap(24),
+                    Gap(24.h),
                   ],
                 ),
               ),
@@ -357,3 +217,4 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
     );
   }
 }
+
