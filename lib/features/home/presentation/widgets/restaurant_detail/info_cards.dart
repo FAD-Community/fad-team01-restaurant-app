@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -17,7 +16,7 @@ class InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Container(width: 70.w,
       padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 8.w),
       decoration: BoxDecoration(
         color: const Color(0xffFFF6F4),
@@ -25,22 +24,20 @@ class InfoCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Icon(icon, size: 24.sp, color: const Color(0xff1A130D)),
+          Icon(icon, size: 18.sp, color: const Color(0xff1A130D)),
           Gap(8),
           Text(
             value,
-            style: AppTextStyles.bodyMedium.copyWith(
+            style: AppTextStyles.caption.copyWith(
               color: const Color(0xff1A130D),
-              fontSize: 18.sp,
               fontWeight: FontWeight.w600,
             ),
           ),
           Gap(4),
           Text(
             label,
-            style: AppTextStyles.caption.copyWith(
+            style: AppTextStyles.inline.copyWith(
               color: const Color(0xffB5A89E),
-              fontSize: 13.sp,
             ),
           ),
         ],

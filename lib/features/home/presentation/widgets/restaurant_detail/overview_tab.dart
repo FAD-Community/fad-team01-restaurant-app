@@ -5,10 +5,11 @@ import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
 import 'package:ka3da/core/widgets/custom_button.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 
 class OverviewTab extends StatelessWidget {
-  const OverviewTab({super.key});
-
+  const OverviewTab({super.key, required this.restaurant});
+  final RestaurantEntity restaurant;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +29,7 @@ class OverviewTab extends StatelessWidget {
           ),
           Gap(8),
           Text(
-            'Pizza ipsum dolor meat lovers buffalo. Pan tomato Philly tomatoes peppers to\\wing. Mouth thin lovers beef rib onions. Tossed olives Philly ranch mayo pork Chicago. Ricotta hand Chicago meat green. Steak pineapple ipsum meat party string lasagna. NY red red Chicago pie. Mayo pie spinach mouth lot melted and.',
+            restaurant.description,
             style: AppTextStyles.body.copyWith(
               color: AppColors.textMuted,
               fontSize: 15.sp,
@@ -64,7 +65,7 @@ class OverviewTab extends StatelessWidget {
                     ),
                     Gap(10),
                     Text(
-                      '010124563789',
+                      restaurant.phone,
                       style: AppTextStyles.body.copyWith(
                         color: AppColors.textMuted,
                         fontSize: 15.sp,
@@ -86,7 +87,7 @@ class OverviewTab extends StatelessWidget {
                     Gap(10),
                     Expanded(
                       child: Text(
-                        'Building 12, El-Teseen St, New Cairo, Cairo',
+                        restaurant.address,
                         style: AppTextStyles.body.copyWith(
                           color: AppColors.textMuted,
                           fontSize: 15.sp,
@@ -101,7 +102,11 @@ class OverviewTab extends StatelessWidget {
           Gap(24),
           CustomButton(
             onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.reserveTabelScreen);
+              Navigator.pushNamed(
+                context,
+                AppRoutes.reserveTabelScreen,
+                arguments: restaurant,
+              );
             },
             child: Text('Reserve Table', style: AppTextStyles.button),
           ),

@@ -3,19 +3,27 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ka3da/core/cache/cache_helper.dart';
+
 import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
 import 'package:ka3da/core/widgets/search/cubit/search_cubit.dart';
+
 import 'package:ka3da/features/nearby/data/models/card_model.dart';
 import 'package:ka3da/features/nearby/presentation/cubit/location/location_cubit.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await CacheHelper.init();
+
   runApp(DevicePreview(enabled: !kReleaseMode, builder: (_) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+// newbic10@gmail.com
+// Password123!
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

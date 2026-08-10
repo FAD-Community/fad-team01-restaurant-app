@@ -13,11 +13,12 @@ class LoginAccountForm extends StatefulWidget {
     required this.passwordController,
     required this.obscurePassword,
     required this.onPasswordToggle,
+    required this.formKey,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
-
+  final GlobalKey<FormState> formKey;
   final bool obscurePassword;
 
   final VoidCallback onPasswordToggle;
@@ -29,52 +30,72 @@ class LoginAccountForm extends StatefulWidget {
 class _LoginAccountFormState extends State<LoginAccountForm> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 16.h),
+    return Form(
+      key: widget.formKey,
+      child: Column(
+        children: [
+          SizedBox(height: 16.h),
 
-        const FieldLabel(title: 'Email Address'),
+          const FieldLabel(title: 'Email Address'),
 
-        CustomTextFormField(
-          controller: widget.emailController,
-          keyboardType: TextInputType.emailAddress,
-          hint: 'Enter your email',
-          icon: '',
-          prefixIcon: Padding(
-            padding: const EdgeInsets.all(14),
-            child: SvgPicture.asset("assets/create_account/EnvelopeSimple.svg"),
-          ),
-        ),
-
-        SizedBox(height: 16.h),
-
-        const FieldLabel(title: 'Password'),
-
-        CustomTextFormField(
-          controller: widget.passwordController,
-          hint: 'Enter your password',
-          icon: '',
-          isPassword: true,
-          obscureText: widget.obscurePassword,
-          onToggleVisibility: widget.onPasswordToggle,
-          prefixIcon: Padding(
-            padding: const EdgeInsets.all(14),
-            child: SvgPicture.asset("assets/create_account/LockSimple.svg"),
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.forgetPasswordScreen);
+          CustomTextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Please enter your email";
+              }
+              return null;
             },
-            child: Text(
-              'Forgot Password?',
-              style: AppTextStyles.caption.copyWith(color: AppColors.accent),
+            controller: widget.emailController,
+            keyboardType: TextInputType.emailAddress,
+            hint: 'Enter your email',
+            icon: '',
+            prefixIcon: Padding(
+              padding: const EdgeInsets.all(14),
+              child: SvgPicture.asset(
+                "assets/create_account/EnvelopeSimple.svg",
+              ),
             ),
           ),
-        ),
-      ],
+
+          SizedBox(height: 16.h),
+
+          const FieldLabel(title: 'Password'),
+
+          CustomTextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Please enter your password";
+              }
+              if (value.length < 6) {
+                return "Password must be at least 6 characters";
+              }
+              return null;
+            },
+            controller: widget.passwordController,
+            hint: 'Enter your password',
+            icon: '',
+            isPassword: true,
+            obscureText: widget.obscurePassword,
+            onToggleVisibility: widget.onPasswordToggle,
+            prefixIcon: Padding(
+              padding: const EdgeInsets.all(14),
+              child: SvgPicture.asset("assets/create_account/LockSimple.svg"),
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.forgetPasswordScreen);
+              },
+              child: Text(
+                'Forgot Password?',
+                style: AppTextStyles.caption.copyWith(color: AppColors.accent),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

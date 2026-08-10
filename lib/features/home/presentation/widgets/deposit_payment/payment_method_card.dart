@@ -24,10 +24,10 @@ class PaymentMethodCard extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
         decoration: BoxDecoration(
           color: AppColors.white,
-          borderRadius: BorderRadius.circular(14.r),
+          borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
             color: isSelected ? AppColors.primary : Colors.transparent,
-            width: 2,
+            width: 1.5,
           ),
           boxShadow: [
             BoxShadow(
@@ -39,7 +39,7 @@ class PaymentMethodCard extends StatelessWidget {
         ),
         child: SvgPicture.asset(
           method['asset'] as String,
-          height: 28.h,
+          height: 15.h,
           fit: BoxFit.contain,
         ),
       ),

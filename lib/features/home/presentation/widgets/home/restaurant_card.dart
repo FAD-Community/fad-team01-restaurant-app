@@ -1,22 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 
-class RestaurantCard extends StatelessWidget {
-  const RestaurantCard({
-    super.key,
-  });
-
+class RestaurantCardHome extends StatelessWidget {
+  const RestaurantCardHome({super.key, required this.restaurant});
+  final RestaurantEntity restaurant;
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: 12.w,
-        vertical: 4,
-      ),
+      margin: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(24.r),
@@ -39,22 +34,19 @@ class RestaurantCard extends StatelessWidget {
                   topLeft: Radius.circular(20.r),
                   topRight: Radius.circular(22.r),
                 ),
-                child: Image.asset(
-                  'assets/main_flow/example.png',
-                  width: double.maxFinite,
+                child: Image.network(
+                  restaurant.image,
+                  width: double.infinity,
                   height: 200.h,
                   fit: BoxFit.cover,
                 ),
               ),
-    
+
               Positioned(
                 top: 12.h,
                 left: 12.w,
                 child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 6.w,
-                    vertical: 4.h,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 4.h),
                   decoration: BoxDecoration(
                     color: Color(0xffB9622C),
                     borderRadius: BorderRadius.circular(50.r),
@@ -95,7 +87,7 @@ class RestaurantCard extends StatelessWidget {
               children: [
                 Gap(4),
                 Text(
-                  'The Grill House',
+                  restaurant.name,
                   style: AppTextStyles.h2.copyWith(
                     fontWeight: FontWeight.w500,
                     fontSize: 20.sp,
@@ -104,45 +96,37 @@ class RestaurantCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Steakhouse',
-                      style: AppTextStyles.captionMedium
-                          .copyWith(fontSize: 16.sp),
+                      restaurant.category,
+                      style: AppTextStyles.captionMedium.copyWith(
+                        fontSize: 16.sp,
+                      ),
                     ),
                     Gap(5),
                     Text('.'),
                     Gap(5),
                     Text(
-                      'EGP 350–600 pp',
-                      style: AppTextStyles.captionMedium
-                          .copyWith(fontSize: 16.sp),
+                      restaurant.price,
+                      style: AppTextStyles.captionMedium.copyWith(
+                        fontSize: 16.sp,
+                      ),
                     ),
                   ],
                 ),
                 Gap(5),
                 Row(
                   children: [
-                    Icon(
-                      Icons.share_location_rounded,
-                      color: Colors.grey[400],
-                    ),
+                    Icon(Icons.share_location_rounded, color: Colors.grey[400]),
                     Gap(4),
                     Text(
                       'New Cairo',
-                      style: AppTextStyles.inline.copyWith(
-                        fontSize: 14.sp,
-                      ),
+                      style: AppTextStyles.inline.copyWith(fontSize: 14.sp),
                     ),
                     Gap(12),
-                    Icon(
-                      Icons.watch_later_outlined,
-                      color: Colors.grey[400],
-                    ),
+                    Icon(Icons.watch_later_outlined, color: Colors.grey[400]),
                     Gap(4),
                     Text(
                       '30 min',
-                      style: AppTextStyles.inline.copyWith(
-                        fontSize: 14.sp,
-                      ),
+                      style: AppTextStyles.inline.copyWith(fontSize: 14.sp),
                     ),
                   ],
                 ),

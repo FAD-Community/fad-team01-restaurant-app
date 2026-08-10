@@ -11,9 +11,11 @@ import 'package:ka3da/features/home/presentation/widgets/reserve_table/guest_cou
 import 'package:ka3da/features/home/presentation/widgets/reserve_table/special_requests_field.dart';
 import 'package:ka3da/features/home/presentation/widgets/reserve_table/step_pill.dart';
 import 'package:ka3da/features/home/presentation/widgets/reserve_table/time_slot.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 
 class ReserveTableScreen extends StatefulWidget {
-  const ReserveTableScreen({super.key});
+  const ReserveTableScreen({super.key, required this.restaurant});
+  final RestaurantEntity restaurant;
 
   @override
   State<ReserveTableScreen> createState() => _ReserveTableScreenState();
@@ -23,7 +25,8 @@ class _ReserveTableScreenState extends State<ReserveTableScreen> {
   DateTime? _selectedDate;
   String? _selectedTime;
   int _guestCount = 1;
-  final TextEditingController _specialRequestsController = TextEditingController();
+  final TextEditingController _specialRequestsController =
+      TextEditingController();
 
   @override
   void dispose() {
@@ -33,6 +36,7 @@ class _ReserveTableScreenState extends State<ReserveTableScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final restaurant = widget.restaurant;
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       body: SafeArea(
@@ -72,7 +76,7 @@ class _ReserveTableScreenState extends State<ReserveTableScreen> {
                             ),
                           ),
                           Text(
-                            'The Grill House',
+                            restaurant.name,
                             style: AppTextStyles.caption.copyWith(
                               fontSize: 14.sp,
                               color: const Color(0xffA89785),
@@ -109,10 +113,7 @@ class _ReserveTableScreenState extends State<ReserveTableScreen> {
                             ),
                           ),
                         ),
-                        const Expanded(
-                          flex: 2,
-                          child: SizedBox(),
-                        ),
+                        const Expanded(flex: 2, child: SizedBox()),
                       ],
                     ),
                   ),
@@ -137,7 +138,9 @@ class _ReserveTableScreenState extends State<ReserveTableScreen> {
                     Text(
                       'Select a Date',
                       style: AppTextStyles.h2.copyWith(
-                          fontSize: 18.sp, fontWeight: FontWeight.w700),
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                     Gap(12.h),
                     CalendarCard(
@@ -152,7 +155,9 @@ class _ReserveTableScreenState extends State<ReserveTableScreen> {
                     Text(
                       'Select a Time',
                       style: AppTextStyles.h2.copyWith(
-                          fontSize: 18.sp, fontWeight: FontWeight.w700),
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                     Gap(8.h),
                     Text(
@@ -167,23 +172,24 @@ class _ReserveTableScreenState extends State<ReserveTableScreen> {
                     Wrap(
                       spacing: 8.w,
                       runSpacing: 8.h,
-                      children: [
-                        '12:00 PM',
-                        '12:30 PM',
-                        '1:00 PM',
-                        '1:30 PM',
-                        '2:00 PM',
-                      ].map((time) {
-                        return TimeSlot(
-                          time: time,
-                          isSelected: _selectedTime == time,
-                          onTap: () {
-                            setState(() {
-                              _selectedTime = time;
-                            });
-                          },
-                        );
-                      }).toList(),
+                      children:
+                          [
+                            '12:00 PM',
+                            '12:30 PM',
+                            '1:00 PM',
+                            '1:30 PM',
+                            '2:00 PM',
+                          ].map((time) {
+                            return TimeSlot(
+                              time: time,
+                              isSelected: _selectedTime == time,
+                              onTap: () {
+                                setState(() {
+                                  _selectedTime = time;
+                                });
+                              },
+                            );
+                          }).toList(),
                     ),
                     Gap(16.h),
                     Text(
@@ -198,38 +204,41 @@ class _ReserveTableScreenState extends State<ReserveTableScreen> {
                     Wrap(
                       spacing: 8.w,
                       runSpacing: 8.h,
-                      children: [
-                        '7:30 PM',
-                        '8:00 PM',
-                        '8:30 PM',
-                        '9:00 PM',
-                        '9:30 PM',
-                        '10:00 PM',
-                        '10:30 PM',
-                        '11:00 PM',
-                      ].map((time) {
-                        return TimeSlot(
-                          time: time,
-                          isSelected: _selectedTime == time,
-                          hasAvailableSubtext: [
+                      children:
+                          [
+                            '7:30 PM',
+                            '8:00 PM',
+                            '8:30 PM',
+                            '9:00 PM',
                             '9:30 PM',
                             '10:00 PM',
                             '10:30 PM',
-                            '11:00 PM'
-                          ].contains(time),
-                          onTap: () {
-                            setState(() {
-                              _selectedTime = time;
-                            });
-                          },
-                        );
-                      }).toList(),
+                            '11:00 PM',
+                          ].map((time) {
+                            return TimeSlot(
+                              time: time,
+                              isSelected: _selectedTime == time,
+                              hasAvailableSubtext: [
+                                '9:30 PM',
+                                '10:00 PM',
+                                '10:30 PM',
+                                '11:00 PM',
+                              ].contains(time),
+                              onTap: () {
+                                setState(() {
+                                  _selectedTime = time;
+                                });
+                              },
+                            );
+                          }).toList(),
                     ),
                     Gap(24.h),
                     Text(
                       'Guest Number & Requests',
                       style: AppTextStyles.h2.copyWith(
-                          fontSize: 18.sp, fontWeight: FontWeight.w700),
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                     Gap(12.h),
                     GuestCounter(
@@ -263,6 +272,7 @@ class _ReserveTableScreenState extends State<ReserveTableScreen> {
                             time: _selectedTime,
                             guestCount: _guestCount,
                             specialRequests: _specialRequestsController.text,
+                            restaurant: restaurant,
                           ),
                         );
                       },

@@ -247,10 +247,10 @@ class _NearbyState extends State<Nearby> {
                     child: ListView.separated(
                       shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),
-                      itemCount: state.restaurants.length,
+                      itemCount: state.allRestaurants.length,
                       separatorBuilder: (_, __) => Gap(16.h),
                       itemBuilder: (context, index) {
-                        final restaurant = state.restaurants[index];
+                        final restaurant = state.allRestaurants[index];
 
                         return RestaurantCard(
                           restaurant: restaurant,
@@ -259,7 +259,7 @@ class _NearbyState extends State<Nearby> {
                           onDirections: () {
                             Navigator.pushNamed(
                               context,
-                              AppRoutes.mapscreen,
+                              AppRoutes.mapScreen,
                               arguments: restaurant,
                             );
                           },

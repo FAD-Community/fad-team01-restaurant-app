@@ -4,22 +4,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 
 class ProductImageAndActions extends StatefulWidget {
-  const ProductImageAndActions({super.key});
-
+  const ProductImageAndActions({super.key, required this.restaurant});
+  final RestaurantEntity restaurant;
   @override
   State<ProductImageAndActions> createState() => _ProductImageAndActionsState();
 }
 
 class _ProductImageAndActionsState extends State<ProductImageAndActions> {
+  // final RestaurantEntity restaurant;
+
   final PageController _pageController = PageController();
   int _currentIndex = 0;
 
-  final List<String> images = [
-    'assets/main_flow/example.png',
-    'assets/main_flow/example2.png',
-  ];
+  late final List<String> images;
+  @override
+  void initState() {
+    super.initState();
+
+    images = [widget.restaurant.image];
+  }
 
   @override
   void dispose() {
@@ -49,7 +55,7 @@ class _ProductImageAndActionsState extends State<ProductImageAndActions> {
                     return SizedBox(
                       width: double.infinity,
                       height: 150,
-                      child: Image.asset(images[index], fit: BoxFit.cover),
+                      child: Image.network(images[index], fit: BoxFit.cover),
                     );
                   },
                 ),
@@ -136,7 +142,7 @@ class _ProductImageAndActionsState extends State<ProductImageAndActions> {
                       Gap(5),
 
                       Text(
-                        '3.5',
+                        widget.restaurant.rating.toString(),
                         style: AppTextStyles.hint.copyWith(
                           color: AppColors.textDarkBrown,
                         ),

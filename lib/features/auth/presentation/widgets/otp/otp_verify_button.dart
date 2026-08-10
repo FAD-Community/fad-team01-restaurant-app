@@ -7,8 +7,8 @@ import 'package:ka3da/core/widgets/custom_button.dart';
 
 class OtpVerifyButton extends StatelessWidget {
   final bool enabled;
-
-  const OtpVerifyButton({super.key, required this.enabled});
+  final VoidCallback onTap;
+  const OtpVerifyButton({super.key, required this.enabled, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +17,7 @@ class OtpVerifyButton extends StatelessWidget {
       backgroundColor: enabled ? AppColors.primary : AppColors.progressInactive,
 
       onPressed: enabled
-          ? () {
-              Navigator.pushNamed(context, AppRoutes.createNewPasswordScreen);
-            }
+          ? onTap
           : () {},
 
       child: Text(

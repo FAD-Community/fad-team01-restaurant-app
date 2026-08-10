@@ -72,7 +72,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               AuthButton(
                 text: "Signup",
                 onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.mainLayout);
+                  Navigator.pushNamed(context, AppRoutes.confirmEmail);
                 },
               ),
               SizedBox(height: 28.h),

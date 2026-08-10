@@ -9,8 +9,11 @@ import 'package:ka3da/features/home/presentation/widgets/deposit_payment/alert_n
 import 'package:ka3da/features/home/presentation/widgets/reserve_table/step_pill.dart';
 import 'package:ka3da/features/home/presentation/widgets/review_reservation/reservation_details_card.dart';
 import 'package:ka3da/features/home/presentation/widgets/review_reservation/restaurant_preview_card.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 
 class ReviewReservationArgs {
+  final RestaurantEntity restaurant;
+
   final DateTime? date;
   final String? time;
   final int? guestCount;
@@ -21,6 +24,7 @@ class ReviewReservationArgs {
     this.time,
     this.guestCount,
     this.specialRequests,
+    required this.restaurant,
   });
 }
 
@@ -28,13 +32,24 @@ class ReviewReservationScreen extends StatefulWidget {
   const ReviewReservationScreen({super.key});
 
   @override
-  State<ReviewReservationScreen> createState() => _ReviewReservationScreenState();
+  State<ReviewReservationScreen> createState() =>
+      _ReviewReservationScreenState();
 }
 
 class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
   final List<String> _months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
 
   String _formatDate(DateTime date) {
@@ -43,13 +58,15 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments as ReviewReservationArgs?;
-    
-    // Set fallback/default mock values if navigated directly
-    final displayDate = args?.date ?? DateTime(2026, 6, 25);
-    final displayTime = args?.time ?? '9:30 PM';
-    final displayGuests = args?.guestCount ?? 5;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ReviewReservationArgs;
 
+    final restaurant = args.restaurant;
+
+    // Set fallback/default mock values if navigated directly
+    final displayDate = args.date ?? DateTime(2026, 6, 25);
+    final displayTime = args.time ?? '9:30 PM';
+    final displayGuests = args.guestCount ?? 5;
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       body: SafeArea(
@@ -90,7 +107,7 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                             ),
                           ),
                           Text(
-                            'The Grill House',
+                            restaurant.name,
                             style: AppTextStyles.caption.copyWith(
                               fontSize: 14.sp,
                               color: const Color(0xffA89785),
@@ -127,10 +144,7 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                             ),
                           ),
                         ),
-                        const Expanded(
-                          flex: 1,
-                          child: SizedBox(),
-                        ),
+                        const Expanded(flex: 1, child: SizedBox()),
                       ],
                     ),
                   ),
@@ -146,7 +160,7 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                 ],
               ),
             ),
-            
+
             // Scrollable Content
             Expanded(
               child: SingleChildScrollView(
@@ -155,27 +169,27 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Restaurant Card
-                    const RestaurantPreviewCard(),
-                    
+                    RestaurantPreviewCard(restaurant: restaurant),
+
                     Gap(20.h),
-                    
+
                     // Reservation Details Card
                     ReservationDetailsCard(
                       date: _formatDate(displayDate),
                       time: displayTime,
                       guests: '$displayGuests guests',
                     ),
-                    
+
                     Gap(12.h),
-                    
+
                     // Refundable Deposit Alert Row
                     const AlertNote(
                       text:
                           'A refundable deposit is required to confirm this booking',
                     ),
-                    
+
                     Gap(24.h),
-                    
+
                     // Payment Buttons
                     CustomButton(
                       backgroundColor: AppColors.primary,
@@ -183,19 +197,25 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
                         Navigator.pushNamed(
                           context,
                           AppRoutes.depositPaymentScreen,
+                          arguments: args,
                         );
                       },
                       child: Text(
                         'Continue to payment',
-                        style: AppTextStyles.button.copyWith(color: Colors.white),
+                        style: AppTextStyles.button.copyWith(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                    
+
                     Gap(12.h),
-                    
+
                     CustomButton(
                       backgroundColor: const Color(0xffFAF3E6),
-                      border: const BorderSide(color: Color(0xff261C14), width: 1),
+                      border: const BorderSide(
+                        color: Color(0xff261C14),
+                        width: 1,
+                      ),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -217,4 +237,3 @@ class _ReviewReservationScreenState extends State<ReviewReservationScreen> {
     );
   }
 }
-

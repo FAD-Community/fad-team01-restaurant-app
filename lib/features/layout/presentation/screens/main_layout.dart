@@ -6,7 +6,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import 'package:ka3da/features/home/presentation/screens/home_screen.dart';
 import 'package:ka3da/features/discover/presentation/screens/discover_screen.dart';
-import 'package:ka3da/features/favorites/presentation/screens/favorites_screen.dart';
+import 'package:ka3da/features/saved/presentation/screens/saved_screen.dart';
 import 'package:ka3da/features/profile/presentation/screens/profile/profile_screen.dart';
 
 class MainLayout extends StatefulWidget {
@@ -81,7 +81,7 @@ class _MainLayoutState extends State<MainLayout> {
       PersistentTabConfig(
         screen: const FavoritesScreen(),
         item: ItemConfig(
-          title: "Favorites",
+          title: "Saved",
           activeColorSecondary: const Color(0xffAE292E).withValues(alpha: 0.2),
           activeForegroundColor: const Color.fromARGB(255, 0, 0, 0),
           icon: SvgPicture.asset(

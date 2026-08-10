@@ -31,7 +31,7 @@ class MyCustomAppBarOne extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 12.w,
       title: Padding(
         padding: EdgeInsets.only(top: 0, bottom: 20.h),
-        child: Text(title, style: AppTextStyles.h1),
+        child: Text(title, style: AppTextStyles.h1.copyWith(color: textColor)),
       ),
       backgroundColor: appbarColor,
       leading: Padding(

@@ -9,6 +9,7 @@ import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/core/theme/colors.dart';
 import 'package:ka3da/core/theme/text_styles.dart';
 import 'package:ka3da/core/widgets/custom_button.dart';
+import 'package:ka3da/features/home/presentation/screens/review_reservation_screen.dart';
 import 'package:ka3da/features/home/presentation/widgets/deposit_payment/alert_note.dart';
 import 'package:ka3da/features/home/presentation/widgets/deposit_payment/dashed_upload_box.dart';
 import 'package:ka3da/features/home/presentation/widgets/deposit_payment/payment_method_card.dart';
@@ -16,7 +17,9 @@ import 'package:ka3da/features/home/presentation/widgets/deposit_payment/total_d
 import 'package:ka3da/features/home/presentation/widgets/reserve_table/step_pill.dart';
 
 class DepositPaymentScreen extends StatefulWidget {
-  const DepositPaymentScreen({super.key});
+  const DepositPaymentScreen({super.key, required this.args});
+
+  final ReviewReservationArgs args;
 
   @override
   State<DepositPaymentScreen> createState() => _DepositPaymentScreenState();
@@ -28,15 +31,15 @@ class _DepositPaymentScreenState extends State<DepositPaymentScreen> {
   bool _isUploading = false;
 
   final List<Map<String, dynamic>> _paymentMethods = [
-    {'id': 'visa', 'asset': 'assets/icons/icons8-visa.svg', 'label': 'Visa'},
+    {'id': 'visa', 'asset': 'assets/deposit/visa.svg', 'label': 'Visa'},
     {
       'id': 'vodafone',
-      'asset': 'assets/icons/vodafone-icon.svg',
+      'asset': 'assets/deposit/vodafone.svg',
       'label': 'Vodafone',
     },
     {
       'id': 'instapay',
-      'asset': 'assets/icons/InstaPay-logobase.net.svg',
+      'asset': 'assets/deposit/instapay.svg',
       'label': 'Instapay',
     },
   ];
@@ -64,6 +67,13 @@ class _DepositPaymentScreenState extends State<DepositPaymentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final restaurant = widget.args.restaurant;
+    final args =
+        ModalRoute.of(context)?.settings.arguments as ReviewReservationArgs?;
+    if (args == null) {
+      return const Scaffold(body: Center(child: Text("No Reservation Data")));
+    }
+
     final canSubmit = _receiptFile != null;
 
     return Scaffold(
@@ -106,7 +116,7 @@ class _DepositPaymentScreenState extends State<DepositPaymentScreen> {
                             ),
                           ),
                           Text(
-                            'The Grill House',
+                            restaurant.name,
                             style: AppTextStyles.caption.copyWith(
                               fontSize: 14.sp,
                               color: const Color(0xffA89785),
@@ -171,12 +181,15 @@ class _DepositPaymentScreenState extends State<DepositPaymentScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: _paymentMethods
-                          .map((m) => PaymentMethodCard(
-                                method: m,
-                                isSelected: _selectedPayment == m['id'],
-                                onTap: () => setState(() =>
-                                    _selectedPayment = m['id'] as String),
-                              ))
+                          .map(
+                            (m) => PaymentMethodCard(
+                              method: m,
+                              isSelected: _selectedPayment == m['id'],
+                              onTap: () => setState(
+                                () => _selectedPayment = m['id'] as String,
+                              ),
+                            ),
+                          )
                           .toList(),
                     ),
 
@@ -195,7 +208,8 @@ class _DepositPaymentScreenState extends State<DepositPaymentScreen> {
                       receiptFile: _receiptFile,
                       isUploading: _isUploading,
                       onPickReceipt: _pickReceipt,
-                      onRemoveReceipt: () => setState(() => _receiptFile = null),
+                      onRemoveReceipt: () =>
+                          setState(() => _receiptFile = null),
                     ),
 
                     Gap(24.h),
@@ -503,4 +517,3 @@ class _DepositPaymentScreenState extends State<DepositPaymentScreen> {
     );
   }
 }
-

@@ -9,10 +9,11 @@ import 'package:ka3da/features/home/presentation/widgets/restaurant_detail/resta
 import 'package:ka3da/features/home/presentation/widgets/restaurant_detail/overview_tab.dart';
 import 'package:ka3da/features/home/presentation/widgets/restaurant_detail/menu_tab.dart';
 import 'package:ka3da/features/home/presentation/widgets/restaurant_detail/reviews_tab.dart';
+import 'package:ka3da/features/nearby/data/models/card_model.dart';
 
 class RestaurantDetails extends StatefulWidget {
-  const RestaurantDetails({super.key});
-
+  const RestaurantDetails({super.key, required this.restaurant});
+  final RestaurantEntity restaurant;
   @override
   State<RestaurantDetails> createState() => _RestaurantDetailsState();
 }
@@ -33,10 +34,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
         decoration: BoxDecoration(
           border: isActive
               ? Border(
-                  bottom: BorderSide(
-                    color: AppColors.primary,
-                    width: 2.h,
-                  ),
+                  bottom: BorderSide(color: AppColors.primary, width: 2.h),
                 )
               : null,
         ),
@@ -54,6 +52,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final restaurant = widget.restaurant;
     return Scaffold(
       backgroundColor: AppColors.surfaceWhite,
       body: SafeArea(
@@ -61,7 +60,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ProductImageAndActions(),
+              ProductImageAndActions(restaurant: restaurant),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 12.w),
                 width: double.infinity,
@@ -70,7 +69,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'The Grill House',
+                      restaurant.name,
                       style: AppTextStyles.h1.copyWith(
                         color: AppColors.textDarkBrown,
                         fontSize: 28.sp,
@@ -80,7 +79,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                     Row(
                       children: [
                         Text(
-                          'Steakhouse',
+                          restaurant.category,
                           style: AppTextStyles.body.copyWith(
                             color: AppColors.textMuted,
                             fontSize: 16.sp,
@@ -90,7 +89,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                         Text('.'),
                         Gap(5),
                         Text(
-                          'EGP 350–600 pp',
+                          restaurant.price,
                           style: AppTextStyles.body.copyWith(
                             color: AppColors.textMuted,
                             fontSize: 16.sp,
@@ -100,7 +99,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                         Text('.'),
                         Gap(5),
                         Text(
-                          'New Cairo',
+                          'Tanta Qism 2',
                           style: AppTextStyles.body.copyWith(
                             color: AppColors.textMuted,
                             fontSize: 16.sp,
@@ -109,25 +108,42 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                       ],
                     ),
                     Gap(10),
-                    const Wrap(
+                    Wrap(
                       spacing: 8,
                       runSpacing: 10,
                       children: [
-                        RestaurantKeywords(title: 'Award-Winning'),
-                        RestaurantKeywords(title: 'Business'),
-                        RestaurantKeywords(title: 'Steakhouse'),
-                        RestaurantKeywords(title: 'Fine Dining'),
+                        RestaurantKeywords(title: restaurant.category),
                       ],
                     ),
 
                     Gap(20),
-                    const Row(
+                    Row(
                       children: [
                         Expanded(
                           child: InfoCard(
-                            icon: Icons.location_on_outlined,
-                            value: '30 min',
-                            label: 'Distance',
+                            icon: Icons.star,
+                            value: restaurant.rating.toString(),
+                            label: 'Rating',
+                          ),
+                        ),
+
+                        Gap(12),
+
+                        Expanded(
+                          child: InfoCard(
+                            icon: Icons.access_time,
+                            value: '${restaurant.time} min',
+                            label: 'Time',
+                          ),
+                        ),
+
+                        Gap(12),
+
+                        Expanded(
+                          child: InfoCard(
+                            icon: Icons.restaurant,
+                            value: restaurant.isOpen ? 'Open' : 'Closed',
+                            label: 'Status',
                           ),
                         ),
                         Gap(12),
@@ -139,13 +155,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                           ),
                         ),
                         Gap(12),
-                        Expanded(
-                          child: InfoCard(
-                            icon: Icons.table_restaurant_outlined,
-                            value: '4 Tables',
-                            label: 'Available',
-                          ),
-                        ),
+                       
                       ],
                     ),
                   ],
@@ -180,17 +190,18 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                 curve: Curves.easeInOut,
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 200),
-                  transitionBuilder: (Widget child, Animation<double> animation) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
+                        return FadeTransition(opacity: animation, child: child);
+                      },
                   child: _activeTabIndex == 0
-                      ? const OverviewTab(key: ValueKey('OverviewTab'))
+                      ? OverviewTab(
+                          key: const ValueKey('OverviewTab'),
+                          restaurant: restaurant,
+                        )
                       : _activeTabIndex == 1
-                          ? const MenuTab(key: ValueKey('MenuTab'))
-                          : const ReviewsTab(key: ValueKey('ReviewsTab')),
+                      ? const MenuTab(key: ValueKey('MenuTab'))
+                      : const ReviewsTab(key: ValueKey('ReviewsTab')),
                 ),
               ),
             ],

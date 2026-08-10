@@ -93,7 +93,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                                   onItemTap: (restaurant) {
                                     Navigator.pushNamed(
                                       context,
-                                      AppRoutes.mapscreen,
+                                      AppRoutes.mapScreen,
                                       arguments: restaurant,
                                     );
                                   },

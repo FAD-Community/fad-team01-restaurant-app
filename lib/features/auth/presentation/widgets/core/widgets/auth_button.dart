@@ -5,10 +5,10 @@ import 'package:ka3da/core/theme/text_styles.dart';
 import 'package:ka3da/core/widgets/custom_button.dart';
 
 class AuthButton extends StatelessWidget {
-  const AuthButton({super.key, required this.text, required this.onPressed});
+  const AuthButton({super.key, required this.text, this.onPressed});
 
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

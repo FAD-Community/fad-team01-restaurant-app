@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ka3da/features/auth/presentation/screens/auth_gate_screen.dart';
+import 'package:ka3da/features/auth/presentation/screens/confirm_email.dart';
 import 'package:ka3da/features/auth/presentation/screens/create_account_screen.dart';
 import 'package:ka3da/features/auth/presentation/screens/create_new_password_screen.dart';
 import 'package:ka3da/features/auth/presentation/screens/forget_password_screen.dart';
@@ -40,10 +41,13 @@ class AppRoutes {
   static const String otpScreen = '/otpScreen';
   static const String createNewPasswordScreen = '/createNewPasswordScreen';
   static const String restaurantDetailsScreen = '/restaurantDetailsScreen';
+  static const String mapScreen = '/mapscreen';
+  static const String nearby = '/nearby';
   static const String reserveTabelScreen = '/reserveTabelScreen';
   static const String reviewReservationScreen = '/reviewReservationScreen';
   static const String depositPaymentScreen = '/depositPaymentScreen';
   static const String notificationsScreen = '/notificationsScreen';
+  static const String confirmEmail = '/confirmemail';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -127,14 +131,18 @@ class AppRoutes {
           builder: (_) => const PrivacyPolicyScreen(),
         );
       case restaurantDetailsScreen:
+        final restaurant = settings.arguments as RestaurantEntity;
+
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => const RestaurantDetails(),
+          builder: (_) => RestaurantDetails(restaurant: restaurant),
         );
       case reserveTabelScreen:
+        final restaurant = settings.arguments as RestaurantEntity;
+
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => const ReserveTableScreen(),
+          builder: (_) => ReserveTableScreen(restaurant: restaurant),
         );
       case reviewReservationScreen:
         return MaterialPageRoute(
@@ -142,15 +150,30 @@ class AppRoutes {
           builder: (_) => const ReviewReservationScreen(),
         );
       case depositPaymentScreen:
+        final args = settings.arguments as ReviewReservationArgs;
+
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => const DepositPaymentScreen(),
+          builder: (_) => DepositPaymentScreen(args: args),
         );
       case notificationsScreen:
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const NotificationsScreen(),
         );
+      case confirmEmail:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const ConfirmEmail(),
+        );
+      case mapScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) =>
+              Mapscreen(restaurant: settings.arguments as RestaurantEntity),
+        );
+      case nearby:
+        return MaterialPageRoute(settings: settings, builder: (_) => Nearby());
 
       //==============================================================================
       default:

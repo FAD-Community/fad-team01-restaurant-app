@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:ka3da/core/api/end_points.dart';
+import 'package:ka3da/core/cache/cache_helper.dart';
+import 'package:ka3da/core/routing/app_routes.dart';
+import 'package:ka3da/core/theme/colors.dart';
+import 'package:ka3da/core/widgets/custom_app_bar_1.dart';
 import 'package:ka3da/features/layout/presentation/widget/navigation_controller.dart';
 import 'package:ka3da/features/profile/presentation/widgets/profile/logout_card.dart';
 import 'package:ka3da/features/profile/presentation/widgets/my_custom_app_Bar.dart';
@@ -20,14 +25,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFAF3E6),
-      appBar: MyCustomAppBar(
+      backgroundColor: AppColors.surfaceLight,
+      appBar: MyCustomAppBarOne(
         onPressed: () {
           NavigationController.controller.jumpToTab(0);
         },
         title: "Profile",
-        textColor: Colors.white,
-        appbarColor: Color(0xff1A130D),
+        textColor: AppColors.surfaceLight,
+        appbarColor: AppColors.darkBackground,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -101,7 +106,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 left: 16.w,
                 right: 16.w,
               ),
-              child: const LogoutCard(),
+              child: InkWell(
+                onTap: () async {
+                  await CacheHelper.removeData(key: ApiKey.token);
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    AppRoutes.loginscreen,
+                    (route) => false,
+                  );
+                },
+                child: const LogoutCard(),
+              ),
             ),
           ],
         ),

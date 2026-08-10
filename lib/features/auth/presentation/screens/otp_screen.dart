@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ka3da/core/routing/app_routes.dart';
 import 'package:ka3da/features/auth/presentation/widgets/otp/otp_code_fields.dart';
 import 'package:ka3da/features/auth/presentation/widgets/otp/otp_header.dart';
 import 'package:ka3da/features/auth/presentation/widgets/otp/otp_progress.dart';
@@ -13,7 +14,6 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
-
   bool isCompleted = false;
 
   @override
@@ -25,7 +25,6 @@ class _OtpScreenState extends State<OtpScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               const OtpProgress(),
 
               const SizedBox(height: 40),
@@ -35,15 +34,15 @@ class _OtpScreenState extends State<OtpScreen> {
               const SizedBox(height: 40),
 
               Container(
-                alignment:Alignment.center,
+                alignment: Alignment.center,
                 child: OtpCodeFields(
-                  onCompleted: (){
+                  onCompleted: () {
                     setState(() {
                       isCompleted = true;
                     });
                   },
-                  onChanged: (){
-                    if(isCompleted){
+                  onChanged: () {
+                    if (isCompleted) {
                       setState(() {
                         isCompleted = false;
                       });
@@ -56,12 +55,14 @@ class _OtpScreenState extends State<OtpScreen> {
 
               OtpVerifyButton(
                 enabled: isCompleted,
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.changePassword);
+                },
               ),
 
               const SizedBox(height: 24),
 
               const OtpResendCode(),
-
             ],
           ),
         ),

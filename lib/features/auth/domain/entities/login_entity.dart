@@ -7,12 +7,13 @@ class LoginEntity {
   final String token;
   final String role;
 
-  LoginEntity({
+  const LoginEntity({
     required this.id,
-    required this.userName,
     required this.email,
     required this.token,
-    required this.role, required this.firstName, required this.lastName,
+    required this.role,
+    required this.firstName,
+    required this.lastName,
+    required this.userName,
   });
 }
-
